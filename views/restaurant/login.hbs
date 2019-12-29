@@ -1,0 +1,20 @@
+<form action="/login" method="post">
+  <p>
+    <label>
+      Nom du restaurant : 
+      <input type="text" name="restaurantNom">
+    </label>
+  </p>
+  <p>
+    <label>
+      Mot de passe:
+      <input type="password" name="motdePasse">
+    </label>
+  </p>
+
+  {{#if errorMessage}}
+  <div class="error-message">{{errorMessage}}</div>
+  {{/if}}
+
+  <button type="submit">Login</button>
+</form>

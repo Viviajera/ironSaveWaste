@@ -1,0 +1,78 @@
+<form action="/signup" method="post" enctype="multipart/form-data">
+  <p>
+    <label>
+      Nom du restaurant:
+      <input type="text" name="restaurantNom">
+    </label>
+  </p>
+
+  <p>
+    <label>
+      Nom du proprietaire:
+      <input type="text" name="proprietaireNom">
+    </label>
+  </p>
+
+  <p>
+    <label>
+      Mail: 
+      <input type="text" name="mail">
+    </label>
+  </p>
+
+  <p>
+    <label>
+      mot de passe: 
+      <input type="password" name="motdePasse">
+    </label>
+  </p>
+
+   <p>
+    <label>
+      Portable: 
+      <input type="text" name="portable"> 
+    </label>
+  </p>
+
+  <p>
+    <label>
+      Siret: 
+      <input type="number" name="siret"> 
+    </label>
+  </p>
+
+
+  <p>
+    <label>
+      Adresse: 
+      <input type="text" name="adresse"> 
+    </label>
+  </p>
+
+ <p>
+    <label>
+      Rue: 
+      <input type="text" name="rue"> 
+    </label>
+  </p>
+
+   <p>
+    <label>
+      Code Postal: 
+      <input type="text" name="codePostal"> 
+    </label>
+  </p>
+
+   <p>
+    <label>
+      Ville: 
+      <input type="text" name="ville"> 
+    </label>
+  </p>
+
+  {{#if errorMessage}}
+  <div class="error-message">{{errorMessage}}</div>
+  {{/if}}
+
+  <button type="submit">Signup</button>
+</form>
