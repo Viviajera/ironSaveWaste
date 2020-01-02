@@ -1,0 +1,22 @@
+<h2>Mise à jour du don</h2>
+<form action="/don/edit?don_id={{don_id}}" method="POST">
+  <label> Nom du produit : 
+    <input type="text" name="donNom" value="{{don.donNom}}" >
+  </label>
+  <label> Type de produit :
+    <input type="text" name="donType" value="{{don.donType}}">
+  </label>
+  <label> Poids du produit : 
+    <input type="text" name="donPoids" value="{{don.donPoids}}">
+  </label>
+  <label> Doneur : 
+    <input type="text" name="doneur" value="{{don.doneur}}"> <!--- array données restaurateur--->
+  </label>
+  <label> Status du don : 
+    <input type="text" name="donStatus" value="{{don.donStatus}}" > <!--- Array,//Pending,booked, picked up dont pending par defaut--->
+  </label>
+  <label> Preneur : 
+    <input type="text" name="preneur" value="{{don.preneur}}"> <!--- array données assos--->
+  </label>
+  <button>Update</button>
+</form>

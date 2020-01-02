@@ -1,0 +1,23 @@
+<h2>Publier un nouveau don</h2>
+<form action="/dons/new" method="POST">
+  <label> Nom du produit : 
+    <input type="text" name="donNom" >
+  </label>
+  <label> Type de produit :
+    <input type="text" name="donType" >
+  </label>
+  <label> Poids du produit : 
+    <input type="text" name="donPoids" >
+  </label>
+  <label> Doneur : 
+    <input type="text" name="doneur" > <!--- array données restaurateur--->
+  </label>
+  <label> Status du don : 
+    <input type="text" name="donStatus" > <!--- Array,//Pending,booked, picked up dont pending par defaut--->
+  </label>
+  <label> Preneur : 
+    <input type="text" name="preneur" > <!--- array données assos--->
+  </label>
+
+  <button>Create</button>
+</form>

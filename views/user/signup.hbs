@@ -1,15 +1,15 @@
 <form action="/signup" method="post" enctype="multipart/form-data">
   <p>
     <label>
-      Nom du restaurant:
-      <input type="text" name="restaurantNom">
+      Raison Sociale:
+      <input type="text" name="raisonSociale">
     </label>
   </p>
 
   <p>
     <label>
-      Nom du proprietaire:
-      <input type="text" name="proprietaireNom">
+      Contact:
+      <input type="text" name="contact">
     </label>
   </p>
 
@@ -22,8 +22,8 @@
 
   <p>
     <label>
-      mot de passe: 
-      <input type="password" name="motdePasse">
+      Password: 
+      <input type="password" name="password">
     </label>
   </p>
 
@@ -36,11 +36,10 @@
 
   <p>
     <label>
-      Siret: 
+      Siret (uniquement restaurateurs): 
       <input type="number" name="siret"> 
     </label>
   </p>
-
 
   <p>
     <label>
@@ -49,7 +48,7 @@
     </label>
   </p>
 
- <p>
+  <p>
     <label>
       Rue: 
       <input type="text" name="rue"> 
@@ -63,7 +62,7 @@
     </label>
   </p>
 
-   <p>
+  <p>
     <label>
       Ville: 
       <input type="text" name="ville"> 
@@ -75,4 +74,3 @@
   {{/if}}
 
   <button type="submit">Signup</button>
-</form>

@@ -11,6 +11,6 @@ const DonSchema = Schema({
   preneur : [{type : Schema.Types.ObjectId, ref: 'Assos'}],
 });
 
-const Assos = mongoose.model('Assos', AssosSchema);
+const Don = mongoose.model('Don', DonSchema);
 
-module.exports = Assos;
+module.exports = Don;
