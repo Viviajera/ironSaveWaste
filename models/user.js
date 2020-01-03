@@ -1,16 +1,16 @@
-const mongoose = require('mongoose');
-const Schema   = mongoose.Schema;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const UserSchema = Schema({
   raisonSociale: String,
   contact: String,
-  mail : String, 
+  mail: String,
   password: String,
-  portable : String,
-  siret : Number, //uniquement sociétés
-  adresse : [{rue : String, codePostal: Number, ville: String}]
+  portable: String,
+  siret: Number, //uniquement sociétés
+  adresse: [{ rue: String, codePostal: Number, ville: String }]
 });
 
-const User = mongoose.model('Assos', AssosSchema);
+const User = mongoose.model("User", UserSchema);
 
 module.exports = User;
