@@ -6,9 +6,13 @@ const UserSchema = Schema({
   contact: String,
   mail: String,
   password: String,
-  portable: String,
+  portable: Number,
   siret: Number, //uniquement sociétés
-  adresse: [{ rue: String, codePostal: Number, ville: String }]
+  adresse: {
+    street: String,
+    zipCode: Number,
+    city: String
+  }
 });
 
 const User = mongoose.model("User", UserSchema);

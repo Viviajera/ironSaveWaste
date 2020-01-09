@@ -1,4 +1,4 @@
-<form action="/signup" method="post" enctype="multipart/form-data">
+<form action="/auth/signup" method="post">
   <p>
     <label>
       Raison Sociale:
@@ -15,57 +15,52 @@
 
   <p>
     <label>
-      Mail: 
+      Mail:
       <input type="text" name="mail">
     </label>
   </p>
 
   <p>
     <label>
-      Password: 
+      Password:
       <input type="password" name="password">
     </label>
   </p>
 
-   <p>
+  <p>
     <label>
-      Portable: 
-      <input type="text" name="portable"> 
+      Portable:
+      <input type="text" name="portable">
     </label>
   </p>
 
   <p>
     <label>
-      Siret (uniquement restaurateurs): 
-      <input type="number" name="siret"> 
+      Siret (uniquement restaurateurs):
+      <input type="number" name="siret">
+    </label>
+  </p>
+  <a>
+    Adresse
+  </a>
+  <p>
+    <label>
+      Rue:
+      <input type="text" name="street">
     </label>
   </p>
 
   <p>
     <label>
-      Adresse: 
-      <input type="text" name="adresse"> 
+      Code Postal:
+      <input type="number" name="zipCode">
     </label>
   </p>
 
   <p>
     <label>
-      Rue: 
-      <input type="text" name="rue"> 
-    </label>
-  </p>
-
-   <p>
-    <label>
-      Code Postal: 
-      <input type="text" name="codePostal"> 
-    </label>
-  </p>
-
-  <p>
-    <label>
-      Ville: 
-      <input type="text" name="ville"> 
+      Ville:
+      <input type="text" name="city">
     </label>
   </p>
 

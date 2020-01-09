@@ -8,7 +8,7 @@ const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
 router.get("/signup", (req, res) => {
-  res.render("authentication/signup", { message: req.flash("error") });
+  res.render("authentication/signup");
 });
 
 router.post("/signup", (req, res, next) => {
@@ -18,10 +18,14 @@ router.post("/signup", (req, res, next) => {
   const password = req.body.password;
   const portable = req.body.portable;
   const siret = req.body.siret;
-  const adresse = req.body.adresse;
+  const adresse = {
+    street: req.body.street,
+    zipCode: req.body.zipCode,
+    city: req.body.city
+  };
 
   // 1. Check username and password are not empty
-  if (raisonSociale === "" || password === "") {
+  if (mail === "" || password === "") {
     res.render("authentication/signup", {
       errorMessage: "Indicate username and password"
     });
@@ -64,7 +68,9 @@ router.post("/signup", (req, res, next) => {
             res.redirect("/");
           });
         })
-        .catch(err => next(err));
+        .catch(err => {
+          next(err);
+        });
     })
     .catch(err => next(err));
 });

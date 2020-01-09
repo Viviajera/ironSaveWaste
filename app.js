@@ -4,18 +4,40 @@ const favicon = require("serve-favicon");
 const logger = require("morgan");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
-
+const flash = require("connect-flash");
+const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
+const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
+const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
 const hbs = require("hbs");
+const User = require("./models/user.js");
+
+mongoose.connect("mongodb://localhost:27017/ironSaveWaste");
 
 const app = express();
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
-// app.set("view engine", "jade"); LE BUG VENAIT PEUT ETRE DE CA
 app.set("view engine", "hbs");
 
 // default value for title local
 app.locals.title = "Express - Generated with IronGenerator";
+
+app.use(
+  session({
+    secret: "our-passport-local-strategy-app",
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
+    resave: true,
+    saveUninitialized: true
+  })
+);
+
+// app.use(flash());
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -23,14 +45,39 @@ app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-
 app.use(express.static(path.join(__dirname, "public")));
+
+passport.serializeUser((user, cb) => {
+  cb(null, user._id);
+});
+passport.deserializeUser((id, cb) => {
+  User.findById(id)
+    .then(user => cb(null, user))
+    .catch(err => cb(err));
+});
+passport.use(
+  new LocalStrategy({ passReqToCallback: true }, (...args) => {
+    const [req, , , done] = args;
+    const { username, password } = req.body;
+    User.findOne({ username })
+      .then(user => {
+        if (!user) {
+          return done(null, false, { message: "Incorrect username" });
+        }
+        if (!bcrypt.compareSync(password, user.password)) {
+          return done(null, false, { message: "Incorrect password" });
+        }
+        done(null, user);
+      })
+      .catch(err => done(err));
+  })
+);
 
 const index = require("./routes/index");
 app.use("/", index);
 
 const authentication = require("./routes/authentication");
-app.use("/", authentication);
+app.use("/auth", authentication);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
@@ -47,6 +94,9 @@ app.use((err, req, res, next) => {
 
   // render the error page
   res.status(err.status || 500);
+
+  console.log("err=", err);
+
   res.render("error");
 });
 
