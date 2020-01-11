@@ -99,7 +99,6 @@ app.use("/asso", association);
 const restaurant = require("./routes/restaurant");
 app.use("/resto", restaurant);
 
-
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
   const err = new Error("Not Found");
