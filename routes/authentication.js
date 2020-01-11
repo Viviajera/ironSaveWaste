@@ -7,6 +7,9 @@ const User = require("../models/user.js");
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
+// // ICI CA PART EN VRILLE
+const ensureLogin = require("connect-ensure-login");
+
 router.get("/signup", (req, res) => {
   res.render("authentication/signup");
 });
@@ -14,9 +17,10 @@ router.get("/signup", (req, res) => {
 router.post("/signup", (req, res, next) => {
   const raisonSociale = req.body.raisonSociale;
   const contact = req.body.contact;
-  const mail = req.body.mail;
+  const username = req.body.username;
   const password = req.body.password;
   const portable = req.body.portable;
+  const clientType = req.body.clientType;
   const siret = req.body.siret;
   const adresse = {
     street: req.body.street,
@@ -24,15 +28,15 @@ router.post("/signup", (req, res, next) => {
     city: req.body.city
   };
 
-  // 1. Check username and password are not empty
-  if (mail === "" || password === "") {
+  // 1. Check eusername and password are not empty
+  if (username === "" || password === "") {
     res.render("authentication/signup", {
       errorMessage: "Indicate username and password"
     });
     return;
   }
 
-  User.findOne({ raisonSociale })
+  User.findOne({ username })
     .then(user => {
       // 2. Check user does not already exist
       if (user) {
@@ -53,10 +57,11 @@ router.post("/signup", (req, res, next) => {
       const newUser = new User({
         raisonSociale,
         contact,
-        mail,
+        username,
         password: hashPass,
         portable,
         siret,
+        clientType,
         adresse
       });
 
@@ -76,25 +81,56 @@ router.post("/signup", (req, res, next) => {
 });
 
 router.get("/login", (req, res) => {
-  try {
-    res.render("authentication/login");
-  } catch (err) {
-    console.log(err);
-  }
+  res.render("authentication/login");
 });
 
-router.post(
-  "/login",
-  passport.authenticate("local", {
-    successRedirect: "/",
-    failureRedirect: "/login",
-    failureFlash: true
-  })
-);
+// router.post(
+//   "/login",
+//   passport.authenticate("local", {
+//     // if clientType ===
+//     successRedirect: "/auth/private-page",
+
+//     failureRedirect: "/login",
+//     failureFlash: true
+//   })
+// );
+
+router.post("/login", (req, res, next) => {
+  console.log("coucou");
+  passport.authenticate("local", (err, theUser, failureDetails) => {
+    console.log("ici");
+    if (err) {
+      // Something went wrong authenticating user
+      return next(err);
+    }
+
+    if (!theUser) {
+      // Unauthorized, `failureDetails` contains the error messages from our logic in "LocalStrategy" {message: '…'}.
+      res.render("auth/login", { errorMessage: "Wrong password or username" });
+      return;
+    }
+
+    // save user in session: req.user
+    req.login(theUser, err => {
+      if (err) {
+        // Session save went bad
+        return next(err);
+      }
+      if (theUser.clientType === "association") {
+        // All good, we are now logged in as association
+        res.redirect("/asso/dashboard");
+      }
+      if (theUser.clientType === "restaurant") {
+        // All good, we are now logged in as restaurant
+        res.redirect("/resto/dashboard");
+      }
+    });
+  })(req, res, next);
+});
 
 router.get("/logout", (req, res) => {
   req.logout();
-  res.redirect("/");
+  res.redirect("/auth/login");
 });
 
 module.exports = router;

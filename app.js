@@ -14,7 +14,14 @@ const LocalStrategy = require("passport-local").Strategy;
 const hbs = require("hbs");
 const User = require("./models/user.js");
 
-mongoose.connect("mongodb://localhost:27017/ironSaveWaste");
+mongoose
+  .connect("mongodb://localhost:27017/ironSaveWaste")
+  .then(() => {
+    console.log("Connected to Mongo!");
+  })
+  .catch(err => {
+    console.error("Error connecting to mongo", err);
+  });
 
 const app = express();
 
@@ -59,14 +66,21 @@ passport.use(
   new LocalStrategy({ passReqToCallback: true }, (...args) => {
     const [req, , , done] = args;
     const { username, password } = req.body;
+    console.log("so far");
     User.findOne({ username })
       .then(user => {
+        console.log("user: ", user);
+        console.log(
+          "machin bcrypt ",
+          bcrypt.compareSync(password, user.password)
+        );
         if (!user) {
-          return done(null, false, { message: "Incorrect username" });
+          return done(null, false, { message: "Incorrect eusername" });
         }
         if (!bcrypt.compareSync(password, user.password)) {
           return done(null, false, { message: "Incorrect password" });
         }
+        console.log("all is good");
         done(null, user);
       })
       .catch(err => done(err));
@@ -78,6 +92,13 @@ app.use("/", index);
 
 const authentication = require("./routes/authentication");
 app.use("/auth", authentication);
+
+const association = require("./routes/association");
+app.use("/asso", association);
+
+const restaurant = require("./routes/restaurant");
+app.use("/resto", restaurant);
+
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

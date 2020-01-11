@@ -1,4 +1,18 @@
-<h1>{{title}}</h1>
+{{!-- <h1>{{title}}</h1>
 <p>Welcome to the super Save Waste tool {{title}}</p>
 
 <a href="/auth/signup"> let's signup </a>
+<a href="/auth/login"> let's login bro </a> --}}
+
+
+<h1>Welcome {{user.username}} to IronSaveWaste</h1>
+
+{{#unless user}}
+<p>
+  <a href="/auth/signup">Signup</a> or <a href="/auth/login">Login</a>
+</p>
+{{else}}
+<p>
+  <a href="/auth/logout">Logout</a>
+</p>
+{{/unless}}

@@ -3,8 +3,9 @@ const Schema = mongoose.Schema;
 
 const UserSchema = Schema({
   raisonSociale: String,
+  clientType: { type: String, enum: ["association", "restaurant"] },
   contact: String,
-  mail: String,
+  username: String,
   password: String,
   portable: Number,
   siret: Number, //uniquement sociétés
