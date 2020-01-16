@@ -9,14 +9,14 @@ const donSchema = Schema({
     default: "divers"
   },
   donPoids: Number,
-  doneur: [{ type: Schema.Types.ObjectId, ref: "restaurant" }],
+  donneur: { type: Schema.Types.ObjectId, ref: "User" },
   datePeremtion: Date,
   donStatus: {
     type: String,
     enum: ["pending", "booked", "pickedUp"],
     default: "pending"
   },
-  preneur: [{ type: Schema.Types.ObjectId, ref: "association" }]
+  preneur: { type: Schema.Types.ObjectId, ref: "User" }
 });
 
 const Don = mongoose.model("Don", donSchema);

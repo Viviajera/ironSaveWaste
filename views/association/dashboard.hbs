@@ -1,8 +1,14 @@
-{{!-- {{#if user}} --}}
 <div>
   Dashboard ASSO
 </div>
-{{!-- {{/if}} --}}
+
+
+{{#each don}}
+<ul>
+  <li>{{donNom}}</li>
+</ul>
+{{/each}}
+
 
 <a href="/asso/historic">View historic</a>
 <a href="/asso/donations">View available donations</a>
