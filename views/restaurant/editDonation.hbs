@@ -1,0 +1,13 @@
+<h2>Edit {{donNom}}</h2>
+
+<form action="/resto/{{don.id}}" method="POST">
+  <p>
+    <label>
+      Nom:
+      <input type="text" name="donNom" value="{{don.donNom}}">
+    </label>
+  </p>
+
+
+  <button>Mettre à jour le don</button>
+</form>

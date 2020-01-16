@@ -1,4 +1,13 @@
 <form action="/auth/signup" method="post">
+
+  <label for="clientType select">Vous êtes... </label>
+
+  <select required type="text" name="clientType">
+    <option value="">asso ou resto il faut choisir</option>
+    <option value="association">une association</option>
+    <option value="restaurant">un restaurant</option>
+  </select required>
+
   <p>
     <label>
       Raison Sociale:
@@ -15,8 +24,8 @@
 
   <p>
     <label>
-      Mail:
-      <input type="text" name="mail">
+      mail:
+      <input type="text" name="username">
     </label>
   </p>
 

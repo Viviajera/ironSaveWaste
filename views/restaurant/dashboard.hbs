@@ -1,0 +1,22 @@
+{{!-- {{#if user}} --}}
+<div>
+  Dashboard RESTO
+</div>
+{{!-- {{/if}} --}}
+
+
+{{#each don}}
+<ul>
+  <li>{{donNom}}</li>
+</ul>
+<a href="/resto/{{id}}/edit">Edit</a>
+<form action="/resto/{{id}}/delete" method="POST">
+  <button>Delete</button>
+</form>
+{{/each}}
+
+
+
+
+<a href="/resto/new-donation">Donate</a>
+<a href="/resto/historic">See donation historic</a>
