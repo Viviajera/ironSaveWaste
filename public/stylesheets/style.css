@@ -1,0 +1,248 @@
+/*-----------------HOME PAGE-INDEX-------------*/ 
+body {
+    margin:0;  /* annule style par défault */
+    font-family: 'Open Sans', sans-serif;
+}
+  
+a {
+    color:inherit;
+    text-decoration:none;
+}
+
+.navbar {
+    background-color: #fff;
+    display:flex; 
+    position:fixed; left:0; top:0; z-index: 99999;
+    width:100%;
+    font-family: 'Open Sans', sans-serif;
+    margin-left:auto; 
+    padding-left:0; /* annule style par défault */
+    margin-right:20px;
+}
+.navbar img {
+    height: 10em;
+    margin-left: 35px; 
+    margin-bottom: 10px; 
+}
+.login {
+    width:70px; 
+    height:30px; 
+    margin-top:70px; 
+    margin-left:40%;
+    padding:10px 10px;     
+    border: 1px solid #52958D;
+    border-radius: 10px;
+    background-color: #52958D;
+} 
+
+.login a {
+    background-color: #52958D;
+    color:white; 
+    list-style: none;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;  
+    padding:auto; 
+    text-align: center;
+}
+
+
+.section1 {
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 30%;
+    display:flex; 
+    background-image: url("../images/landing.png");
+    background-size: cover;
+    background-position: center;
+    height:60vh;
+    color: #fff;
+    
+}
+.section1, .intro {
+    text-align:center; 
+    justify-content: space-evenly;
+}
+.section1 h1 {
+    margin-top:30%;
+    margin-bottom:0;
+    font-size:400%;
+    text-align:center; 
+}
+.section1 p {
+    font-size:175%;
+    text-align:center; 
+}
+
+
+#section2 {
+    display:flex ;
+    background-color:white; 
+    text-align: center; 
+    font-family: 'Open Sans', sans-serif;
+    justify-content: space-evenly;
+    margin:30px; 
+}
+.restaurateurSignup{
+    display:inline-flex;
+    margin-bottom: 50px; 
+    text-align: center; 
+    font-size: 25px;
+    justify-content: center; 
+    margin-left:0%;  
+}
+
+.restaurateurSignup img{
+    margin-left: 15%;
+    width:50%; 
+    height:80%; 
+}
+
+.assosSignup{
+    display:inline-flex;
+    text-align: center; 
+    margin-left: 10%;
+    font-size: 25px;
+}
+.assosSignup img{
+    
+    width:50%; 
+    height:70%;; 
+}
+
+.restaurateurSignupleft a, .assosSignuprigth a {
+    display: block;
+    color:white;
+    height:30px; 
+    padding:10px 10px;     
+    border: 1px solid #52958D;
+    border-radius: 10px;
+    background-color: #52958D;
+}
+.restaurateurSignup h3, .assosSignup h3{
+    font-size:150%;
+    padding-bottom:.10em;
+    color: #52958D;
+    padding:10px 10px; 
+}
+.restaurateurSignup p, .assosSignup p {
+    padding:10px 10px; 
+}
+
+
+footer ul{ 
+    display: flex; 
+    color: #52958D; 
+    background-color: white;
+    list-style: none;  
+    justify-content: center;
+    margin-left:auto;
+    padding: 0; 
+}
+footer ul li{
+    padding-left: 10px; 
+}
+/*-----------Login page----------*/ 
+/*-----------Signup page----------*/ 
+/*-----------Dons view----------*/ 
+
+/*-----------Resto dashboard----------*/ 
+.helloUser{
+    color:#52958D;
+    margin-top:200px;
+    margin-bottom: 30px; 
+    padding:0px;
+    margin-left:70px;
+}
+#kpiSection{
+    font: 100% sans-serif;
+    display:flex;
+    justify-content: space-evenly;
+    color:white;
+    text-align: center;
+}
+.kpi { 
+    display:block; 
+    padding:10px 10px;     
+    border: 1px solid #52958D;
+    border-radius: 10px;
+    background-color: #52958D; 
+}
+
+#donsList{
+    font-size: 20px;
+    margin-top:20px; 
+    margin-left:70px;
+    font-style:sans-serif;
+    border-radius: 10px;
+    border-collapse: collapse;
+    empty-cells: show;
+    border: 1px solid #52958D;
+}
+#donsList > caption {
+    text-align: left;
+    font-size: 200%;
+    border-bottom: .2em solid #52958D;
+    margin-bottom: .5em;
+}
+#donsList th{
+    color:grey; 
+    text-align: center;
+    padding-right: 5em;
+    padding-left: 5em;
+    border: 1px solid grey;
+    background-color:white;
+    border-radius: 10px;
+}
+#donsList td{
+    text-align: center;
+    padding-right: 5em;
+    padding-left: 5em;
+    border: 1px solid grey;
+    background-color: rgb(238, 231, 231);
+}
+
+.btns-dashboard{
+    display:flex;
+    justify-content: space-evenly; 
+}
+
+.btn-historic{
+    font: 100% sans-serif;
+    font-weight: bold;
+    color:white; 
+    display:block;
+    text-align:center;  
+    padding: 10px 10px;    
+    border: 1px solid #52958D;
+    border-radius: 10px;
+    background-color: #52958D;
+    height:10%;
+    width:20%; 
+    margin-top:50px; 
+}
+
+.newDon{
+    background-color: white;
+    color:black;
+    display:block;
+    margin-top:20px;  
+    border: 1px solid rgb(238, 231, 231);
+    border-radius: 10px;
+    padding: 10px 10px; 
+    width:40%; 
+    
+}
+.btn-fairenewDon, .btn-sauverRepas{
+    color:black; 
+    background-color: #FADB00;
+    font: 100% sans-serif;
+    font-weight: bold;
+    text-align:center;  
+    padding: 10px 10px;    
+    border-radius: 10px;
+}
+
+
+/*-----------Asso dashboard----------*/ 
+/*-----------Resto historic view-----*/ 
+

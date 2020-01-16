@@ -1,4 +1,5 @@
 const express = require("express");
+const hbs = require("hbs");
 const path = require("path");
 const favicon = require("serve-favicon");
 const logger = require("morgan");
@@ -11,7 +12,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-const hbs = require("hbs");
+
 const User = require("./models/user.js");
 
 mongoose.connect("mongodb://localhost:27017/ironSaveWaste");
@@ -46,6 +47,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+
 
 passport.serializeUser((user, cb) => {
   cb(null, user._id);

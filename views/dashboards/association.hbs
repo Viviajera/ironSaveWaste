@@ -1,0 +1,72 @@
+    <div class="logout">
+        <a href="authentication/login">Logout</a>
+      </div>
+​<!---KPI section--->
+    <div class="helloUser">
+    <h1>Bonjour{{{user.name}}}</h1>
+    </div>
+    ​<section id = "kpiSection">
+        <div class="kpi">
+            <h2>Il y a {{don.pending.lenght}} disponibles</h2> <!--- A vérifier : remonter la largeur de l'array des dons picked up--->
+            <div class="btn-sauverRepas">
+            <a href="../dons/show.hbs">Sauver un répas</a><!--- path à vérifier--->
+            </div>
+          </div>
+          
+          <div class="kpi">
+            <h2>Répas récupérés</h2>
+            <h3>300</h3> <!--- calculette estimative x kilos = x repas --->
+          </div>
+          
+          <div class="kpi">
+            <h2>Emissions evitées</h2>
+            <h3>567</h3> <!---Emissions CO2 diesel pour 1kg de déchets x n° kilos donnés--->
+          </div>
+    </section>
+
+    <!--- DONS BOARD --->
+        <!---type, date de picked up, montant géneré--->
+      <table id="donsList">
+        <caption>Dons reservés à récuperer</caption>
+        <thead>
+        <tr>
+          <th>Produit disponible</th>
+          <th>Date-peremption</th>
+          <th>Poids</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr>
+              <!---{{#each don.donStatus = booked}}   a verifier Si le don a un status picked alors pusher dans ce tableau--->
+            <td>{{don.donName}}</td>
+            <td>{{don.datepickedUp}}</td>
+            <td>{{don.poids}}kg</td> <!--- le montant a remonter par don--->
+          </tr>
+          <tr>
+             <td>{{don.donName}}</td>
+             <td>{{don.datePeremption}}</td>
+             <td>{{don.poids}}kg</td> 
+         </tr>
+          <tr>
+             <td>{{don.donName}}</td>
+             <td>{{don.datePeremption}}</td>
+             <td>{{don.poids}}kg</td> 
+         </tr>
+         <tr>
+           <td>{{don.donName}}</td>
+           <td>{{don.datePeremption}}</td>
+           <td>{{don.poids}}kg</td> 
+       </tr>
+      </tbody>
+      </table>
+      <!--historic & new don--->
+      <div class="btns-dashboard">
+        <div class="btn-historic">
+          <a href="../dons/show.hbs">Voir l'historique total</a><!--- path menant à l'array des dons picked up--->
+        </div>
+      </div>
+        
+</body>
+
+<!---footer codé dans le layout-->
+</html>
