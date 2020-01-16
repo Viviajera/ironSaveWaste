@@ -84,7 +84,6 @@ router.get("/login", (req, res) => {
   res.render("authentication/login");
 });
 
-
 router.post("/login", (req, res, next) => {
   console.log("coucou");
   passport.authenticate("local", (err, theUser, failureDetails) => {

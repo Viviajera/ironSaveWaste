@@ -3,14 +3,20 @@
   Dashboard RESTO
 </div>
 {{!-- {{/if}} --}}
-{{!-- 
-<ul>
+
+
 {{#each don}}
-  <li>
-    <a href="don/{{_id}}">{{donNom}}</a>
-  </li>
+<ul>
+  <li>{{donNom}}</li>
+</ul>
+<a href="/resto/{{id}}/edit">Edit</a>
+<form action="/resto/{{id}}/delete" method="POST">
+  <button>Delete</button>
+</form>
 {{/each}}
-</ul> --}}
+
+
+
+
 <a href="/resto/new-donation">Donate</a>
-<a href="/resto/edit-donation">Edit a donation</a>
 <a href="/resto/historic">See donation historic</a>

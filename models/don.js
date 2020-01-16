@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const DonSchema = Schema({
+const donSchema = Schema({
   donNom: String,
   donType: {
     type: String,
@@ -19,6 +19,6 @@ const DonSchema = Schema({
   preneur: [{ type: Schema.Types.ObjectId, ref: "association" }]
 });
 
-const Don = mongoose.model("Don", DonSchema);
+const Don = mongoose.model("Don", donSchema);
 
 module.exports = Don;
