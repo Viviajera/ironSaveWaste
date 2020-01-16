@@ -15,9 +15,6 @@ a {
     position:fixed; left:0; top:0; z-index: 99999;
     width:100%;
     font-family: 'Open Sans', sans-serif;
-    margin-left:auto; 
-    padding-left:0; /* annule style par défault */
-    margin-right:20px;
 }
 .navbar img {
     height: 10em;
@@ -49,7 +46,7 @@ a {
 
 .section1 {
     font-family: 'Open Sans', sans-serif;
-    margin-top: 30%;
+    margin-top: 10px;
     display:flex; 
     background-image: url("../images/landing.png");
     background-size: cover;
@@ -63,7 +60,7 @@ a {
     justify-content: space-evenly;
 }
 .section1 h1 {
-    margin-top:30%;
+    margin-top:40%;
     margin-bottom:0;
     font-size:400%;
     text-align:center; 
@@ -75,38 +72,31 @@ a {
 
 
 #section2 {
+    align-items: center;
     display:flex ;
     background-color:white; 
-    text-align: center; 
     font-family: 'Open Sans', sans-serif;
-    justify-content: space-evenly;
     margin:30px; 
+    justify-content: space-evenly;
 }
 .restaurateurSignup{
-    display:inline-flex;
-    margin-bottom: 50px; 
+    display:flex; 
     text-align: center; 
-    font-size: 25px;
-    justify-content: center; 
-    margin-left:0%;  
+    justify-content: space-between; 
 }
 
 .restaurateurSignup img{
-    margin-left: 15%;
-    width:50%; 
-    height:80%; 
+    width:50%;  
 }
 
 .assosSignup{
-    display:inline-flex;
+    display:flex;
     text-align: center; 
-    margin-left: 10%;
-    font-size: 25px;
+    justify-content: space-between; 
 }
 .assosSignup img{
-    
-    width:50%; 
-    height:70%;; 
+    height:18em; 
+    object-fit: cover;
 }
 
 .restaurateurSignupleft a, .assosSignuprigth a {
@@ -117,6 +107,7 @@ a {
     border: 1px solid #52958D;
     border-radius: 10px;
     background-color: #52958D;
+    flex:1; 
 }
 .restaurateurSignup h3, .assosSignup h3{
     font-size:150%;
@@ -142,6 +133,13 @@ footer ul li{
     padding-left: 10px; 
 }
 /*-----------Login page----------*/ 
+
+form{
+    margin-top:30%;
+    display:block; 
+    align-items: center;
+    justify-content: space-around;
+}
 /*-----------Signup page----------*/ 
 /*-----------Dons view----------*/ 
 

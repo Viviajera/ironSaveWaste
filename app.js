@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const hbs = require("hbs");
 const path = require("path");
@@ -16,7 +17,7 @@ const LocalStrategy = require("passport-local").Strategy;
 const User = require("./models/user.js");
 
 mongoose
-  .connect("mongodb://localhost:27017/ironSaveWaste")
+  .connect(process.env.MONGODB_URI)
   .then(() => {
     console.log("Connected to Mongo!");
   })
