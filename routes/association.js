@@ -80,6 +80,22 @@ router.post("/reserve-don/:id", (req, res, next) => {
     .catch(err => next(err));
 });
 
+router.post("/recupere-reservation/:id",(req, res, next)=>{
+  Don.update(
+    { _id: req.params.id },
+    {
+      $set: {
+        donStatus:"pickedUp",
+      }
+    }
+  )
+    .then(don => {
+      res.redirect("/asso/dashboard")
+    }) 
+
+    .catch(err => next(err));
+});
+
 router.post("/annule-reservation/:id", (req, res, next) => {
   Don.update(
     { _id: req.params.id },

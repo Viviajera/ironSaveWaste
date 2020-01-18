@@ -1,4 +1,11 @@
-/*-----------------HOME PAGE-INDEX-------------*/ 
+//    _    _  ____  __  __ ______   _____        _____ ______ 
+//   | |  | |/ __ \|  \/  |  ____| |  __ \ /\   / ____|  ____|
+//   | |__| | |  | | \  / | |__    | |__) /  \ | |  __| |__   
+//   |  __  | |  | | |\/| |  __|   |  ___/ /\ \| | |_ |  __|  
+//   | |  | | |__| | |  | | |____  | |  / ____ \ |__| | |____ 
+//   |_|  |_|\____/|_|  |_|______| |_| /_/    \_\_____|______|
+//                                                            
+//                                                            
 body {
     margin:0;  /* annule style par défault */
     font-family: 'Open Sans', sans-serif;
@@ -141,7 +148,14 @@ a {
 #footer ul li{
     padding-left: 10px; 
 }
-/*-----------Login page / signup page----------*/ 
+//    _      ____   _____ _____ _   _     _______ _____ _____ _   _ _    _ _____  
+//   | |    / __ \ / ____|_   _| \ | |   / / ____|_   _/ ____| \ | | |  | |  __ \ 
+//   | |   | |  | | |  __  | | |  \| |  / / (___   | || |  __|  \| | |  | | |__) |
+//   | |   | |  | | | |_ | | | | . ` | / / \___ \  | || | |_ | . ` | |  | |  ___/ 
+//   | |___| |__| | |__| |_| |_| |\  |/ /  ____) |_| || |__| | |\  | |__| | |     
+//   |______\____/ \_____|_____|_| \_/_/  |_____/|_____\_____|_| \_|\____/|_|     
+//                                                                                
+//  
 
 form{
     margin-top: 15em;
@@ -164,7 +178,14 @@ button{
 }
 /*-----------Dons view----------*/ 
 
-/*-----------Resto dashboard----------*/ 
+//    _____           _____ _    _ ____   ____          _____  _____   _____ 
+//   |  __ \   /\    / ____| |  | |  _ \ / __ \   /\   |  __ \|  __ \ / ____|
+//   | |  | | /  \  | (___ | |__| | |_) | |  | | /  \  | |__) | |  | | (___  
+//   | |  | |/ /\ \  \___ \|  __  |  _ <| |  | |/ /\ \ |  _  /| |  | |\___ \ 
+//   | |__| / ____ \ ____) | |  | | |_) | |__| / ____ \| | \ \| |__| |____) |
+//   |_____/_/    \_\_____/|_|  |_|____/ \____/_/    \_\_|  \_\_____/|_____/ 
+//                                                                           
+//      
 .helloUser{
     color:#52958D;
     margin-top:200px;
@@ -178,6 +199,7 @@ button{
     justify-content: space-evenly;
     color:white;
     text-align: center;
+    margin-top:10em; 
 }
 .kpi { 
     display:block; 
@@ -189,8 +211,9 @@ button{
 
 #donsList{
     font-size: 20px;
-    margin-top:20px; 
-    margin-left:70px;
+    margin:auto; 
+    margin-top:2em; 
+    justify-content: center;
     font-style:sans-serif;
     border-radius: 10px;
     border-collapse: collapse;
@@ -206,23 +229,24 @@ button{
 #donsList th{
     color:grey; 
     text-align: center;
-    padding-right: 5em;
-    padding-left: 5em;
+    height: max-content;
+    width: max-content;
+    padding:.5em; 
     border: 1px solid grey;
     background-color:white;
     border-radius: 10px;
 }
 #donsList td{
     text-align: center;
-    padding-right: 5em;
-    padding-left: 5em;
+    padding:.5em; 
     border: 1px solid grey;
     background-color: rgb(238, 231, 231);
 }
 
 .btns-dashboard{
     display:flex;
-    justify-content: space-evenly; 
+    justify-content: space-evenly;
+    margin-top:2em;  
 }
 
 .btn-historic{
@@ -260,7 +284,4 @@ button{
     padding: 10px 10px;    
     border-radius: 10px;
 }
-
-
-/*-----------Asso dashboard----------*/ 
 /*-----------Resto historic view-----*/ 

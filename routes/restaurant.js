@@ -30,9 +30,18 @@ router.get("/dashboard", ensureLogin.ensureLoggedIn(), function(
     });
 });
 
-router.get("/historic", ensureLogin.ensureLoggedIn(), (req, res) => {
-  res.render("restaurant/historic", { user: req.user });
-});
+// router.get("/historic", ensureLogin.ensureLoggedIn(), (req, res) => {
+
+//   Don.find({ donStatus: "pickedUp" })
+//     .then(data => {
+//       console.log(data);
+//       res.render("restaurant/historic", { don: data });
+//     })
+//     .catch(err => {
+//       console.error("Error: ", err);
+//       next(err);
+//     });
+// });
 
 router.get("/new-donation", ensureLogin.ensureLoggedIn(), (req, res) => {
   res.render("restaurant/newDonation", { user: req.user });

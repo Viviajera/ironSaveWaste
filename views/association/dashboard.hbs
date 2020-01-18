@@ -1,25 +1,65 @@
-<div>
-  Dashboard ASSO
-</div>
+  <div class="navbar">
+    <img src= "/images/logo-sw.png" alt="SW logo"/>
+    <a href="authentication/logout">Logout</a>
+  </div>
+​<!---KPI section--->
+    <div class="helloUser">
+    <h1>Bonjour{{{user.username}}}</h1>
+    </div>
+    ​<section id = "kpiSection">
+        <div class="kpi">
+            <h2>Il y a {{don.pending.lenght}} disponibles</h2> <!--- A vérifier : remonter la largeur de l'array des dons picked up--->
+            <div class="btn-sauverRepas">
+            <a href="/asso/available-donations">Sauver un répas</a><!--- path à vérifier--->
+            </div>
+          </div>
+          
+          <div class="kpi">
+            <h2>Répas récupérés</h2>
+            <h3>300</h3> <!--- calculette estimative x kilos = x repas --->
+          </div>
+          
+          <div class="kpi">
+            <h2>Emissions evitées</h2>
+            <h3>567</h3> <!---Emissions CO2 diesel pour 1kg de déchets x n° kilos donnés--->
+          </div>
+    </section>
 
-<h2>
-  Il y a dons disponibles
-</h2>
+    <!--- DONS BOARD --->
+        <!---type, date de picked up, montant géneré--->
+      {{#each don}}
+      <table id="donsList">
+        <caption>Dons reservés à récuperer</caption>
+        <thead>
+        <tr>
+          <th>Produit</th>
+          <th>Type de produit</th>
+          <th>Date de peremption</th>
+          <th>Doneur</th>
+          <th>Status</th>
+          <th>Annuler</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{donNom}}</td>
+            <td>{{donType}}</td>
+            <td>{{datePeremption}}</td>
+            <td>{{doneur.raisonSociale}}</td>
+            <td>{{donStatus}}</td>
+            <td><form action="/asso/recupere-reservation/{{_id}}" method="POST">
+            <button>Récuperer</button></form></td>
+            <td><form action="/asso/annule-reservation/{{_id}}" method="POST">
+            <button>Annuler</button></form></td>
+          </tr>
+      </tbody>
+      </table>
+      {{/each}}
+      <!--historic & new don--->
+      <div class="btns-dashboard">
+        <div class="btn-historic">
+          <a href="/asso/historic">Voir l'historique total</a><!--- path menant à l'array des dons picked up--->
+        </div>
+      </div>
 
-
-{{#each don}}
-<ul>
-  <li>{{donNom}}</li>
-  <li>{{donStatus}}</li>
-  <li>donneur : {{donneur.raisonSociale}}</li>
-  <li>preneur : {{preneur.raisonSociale}}</li>
-  <form action="/asso/annule-reservation/{{_id}}" method="POST">
-    <button>Annuler la réservation</button>
-  </form>
-
-</ul>
-{{/each}}
-
-
-<a href="/asso/historic">View historic</a>
-<a href="/asso/available-donations">View available donations</a>
+<!---footer codé dans le layout-->
