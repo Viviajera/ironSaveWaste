@@ -15,7 +15,6 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const User = require("./models/user.js");
 
-
 mongoose
   .connect(process.env.MONGODB_URI)
   .then(() => {
@@ -30,6 +29,10 @@ const app = express();
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
+
+hbs.registerHelper("json", function(context) {
+  return JSON.stringify(context);
+});
 
 // default value for title local
 app.locals.title = "Express - Generated with IronGenerator";

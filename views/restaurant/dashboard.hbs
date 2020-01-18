@@ -1,76 +1,84 @@
-
-
-
-
-
-
-
-<div class="navbar">
+{{!-- <div class="navbar">
   <div class="logout">
-  <a href="authentication/login">Logout</a>
+    <a href="authentication/logout">Logout</a>
   </div>
 </div>
 
-​<!---KPI section---><div class="helloUser"><h1>Bonjour{{{user.name}}}</h1></div>
-<section id = "kpiSection">
-  <div class="kpi">
-        h2>Vos économies</h2>
-      <h3>10 000 €</h3> <!---ce chiffre doit varier en fonction du "taxe generator"--->
+​ --}}
+
+<!---KPI section--->
+
+<div class="helloUser">
+  {{!-- <h1>Bonjour{{{user.name}}}</h1></div> --}}
+  <section id="kpiSection">
+    <div class="kpi">
+      h2>Vos économies</h2>
+      <h3>10 000 €</h3>
+      <!---ce chiffre doit varier en fonction du "taxe generator"--->
     </div>
-          
+
     <div class="kpi">
       <h2>Répas donnés</h2>
-      <h3>300</h3> <!---Idem comment calculer ce chiffre--->
+      <h3>300</h3>
+      <!---Idem comment calculer ce chiffre--->
     </div>
-          
+
     <div class="kpi">
       <h2>Emissions evitées</h2>
-      <h3>567</h3> <!---Emissions CO2 diesel pour 1kg de déchets x n° kilos donnés--->
-    </div></section>
+      <h3>567</h3>
+      <!---Emissions CO2 diesel pour 1kg de déchets x n° kilos donnés--->
+    </div>
+  </section>
 
-    <!--- DONS BOARD --->
-        <!---type, date de picked up, montant géneré--->
-{{#each don}}
-<table id="donsList">
-  <caption>Dons en attente</caption>
-  <thead>
-  <tr>
-    <th>Produit</th>
-    <th>Type de produit</th>
-    <th>Date de peremption</th>
-    <th>Preneur</th>
-    <th>Status</th>
-  </tr>
-  </thead>
-  <tbody>
-    <tr>
-              <!---{{#each don.donStatus = picked up}}   a verifier Si le don a un status picked alors pusher dans ce tableau--->
-      <td>{{donNom}}</td>
-      <td>{{donType}}</td>
-      <td>{{datePeremption}}</td>
-      <td>{{preneur.raisonSociale}}</td>
-      <td>{{donStatus}}</td> 
-      <td><a href="/resto/{{id}}/edit">Edit</a></td>
-      <td><form action="/resto/{{id}}/delete" method="POST"><button>Delete</button></form></td>
-    </tr>
-  </tbody>
- </table>
- 
-<form action="/resto/{{id}}/delete" method="POST">
-  <button>Delete</button>
-</form>
- {{/each}}
-      <!--historic & new don--->
-<div class="btns-dashboard">
-      <div class="newDon">
-        <h2>Vous avez quelque chose à donner? </h2>
-        <div class="btn-fairenewDon">
-          <a href="/resto/new-donation">Faire un nouveau don</a><!---Idem comment calculer ce chiffre--->
-        </div>
+  <!--- DONS BOARD --->
+
+
+  {{#each don}}
+  <table id="donsList">
+    <caption>Dons en attente</caption>
+    <thead>
+      <tr>
+        <th>Produit</th>
+        <th>Type de produit</th>
+        <th>Date de peremption</th>
+        <th>Preneur</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{donNom}}</td>
+        <td>{{donType}}</td>
+        <td>{{datePeremption}}</td>
+        <td>{{preneur.raisonSociale}}</td>
+        <td>{{donStatus}}</td>
+        <td><a href="/resto/{{id}}/edit">Edit</a></td>
+        <td>
+          <form action="/resto/{{id}}/delete" method="POST"><button>Delete</button></form>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  {{/each}}
+
+
+
+  <!--historic & new don--->
+
+
+
+  <div class="btns-dashboard">
+    <div class="newDon">
+      <h2>Vous avez quelque chose à donner? </h2>
+      <div class="btn-fairenewDon">
+        <a href="/resto/new-donation">Faire un nouveau don</a>
+        <!---Idem comment calculer ce chiffre--->
       </div>
+    </div>
 
-  <div class="btn-historic">
-    <a href="/resto/historic">Voir l'historique total</a><!--- path menant à l'array des dons picked up--->
-  </div>
-</div>
-<!---footer codé dans le layout-->
+    <div class="btn-historic">
+      <a href="/resto/historic">Voir l'historique total</a>
+      <!--- path menant à l'array des dons picked up--->
+    </div>
+  </div>>

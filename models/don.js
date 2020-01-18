@@ -16,7 +16,11 @@ const donSchema = Schema({
     enum: ["pending", "booked", "pickedUp"],
     default: "pending"
   },
-  preneur: { type: Schema.Types.ObjectId, ref: "User" }
+  preneur: { type: Schema.Types.ObjectId, ref: "User" },
+  donGeoloc: {
+    lat: Number,
+    lng: Number
+  }
 });
 
 const Don = mongoose.model("Don", donSchema);

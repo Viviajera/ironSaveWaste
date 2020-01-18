@@ -45,17 +45,21 @@ router.post("/new-donation", function(req, res, next) {
   const datePeremtion = req.body.datePeremtion;
   const donStatus = req.body.donStatus;
   const preneur = req.body.preneur;
+  const lat = req.body.lat;
+  const lng = req.body.lng;
 
   Don.create({
     donNom: donNom,
     donType: donType,
     donPoids: donPoids,
     donneur: req.user.id,
-    // TODO remplacer user.id par raisonSocial, il faut require le champs raisonSocial
-    // dans le submit du formulaire pour éviter qu'il soit vide et que ça fasse planter
     datePeremtion: datePeremtion,
     donStatus: donStatus,
-    preneur: preneur
+    preneur: preneur,
+    donGeoloc: {
+      lat: lat,
+      lng: lng
+    }
   })
     .then(() => res.redirect("/resto/dashboard"))
     .catch(() => res.redirect("/resto/new-donation"));

@@ -15,20 +15,14 @@
 </ul>
 {{/each}}
 
-<head>
-  <title>My First Map</title>
-  <style>
-    #map {
-      height: 500px;
-      width: 100%;
-    }
-  </style>
-</head>
 
-<body>
-  <h3>My First Map</h3>
-  <div id="map"></div>
+<h3>My First Map</h3>
+<div class="donation-map"></div>
 
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3a3zhkAEBIXPnrBSIC1H-nNxQNtu8ljc"></script>
-  <script type="text/javascript" src="main.js"></script>
-</body>
+<script>
+  var alldons = {{{ json don }}};
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3a3zhkAEBIXPnrBSIC1H-nNxQNtu8ljc"></script>
+
+<script type="text/javascript" src="/javascripts/main.js"></script>
