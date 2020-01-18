@@ -13,8 +13,8 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-
 const User = require("./models/user.js");
+
 
 mongoose
   .connect(process.env.MONGODB_URI)
@@ -55,7 +55,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-
 
 passport.serializeUser((user, cb) => {
   cb(null, user._id);

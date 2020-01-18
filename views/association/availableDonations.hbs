@@ -1,8 +1,34 @@
-<h2>Donation list</h2>
-{{!-- <ul>
+<h2>avalaible donation list</h2>
+
 {{#each don}}
-  <li>
-    <a href="don/{{_id}}">{{donNom}}</a>
-  </li>
+<ul>
+  <li>{{donNom}}</li>
+  <li>{{donneur}}</li>
+  <li>{{donStatus}}</li>
+  <li>{{donPoids}}</li>
+
+
+  <form action="/asso/reserve-don/{{_id}}" method="POST">
+    <button>Réserver</button>
+  </form>
+
+</ul>
 {{/each}}
-</ul> --}}
+
+<head>
+  <title>My First Map</title>
+  <style>
+    #map {
+      height: 500px;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <h3>My First Map</h3>
+  <div id="map"></div>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3a3zhkAEBIXPnrBSIC1H-nNxQNtu8ljc"></script>
+  <script type="text/javascript" src="main.js"></script>
+</body>

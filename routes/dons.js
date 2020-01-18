@@ -17,7 +17,7 @@
 //     const donNom = req.body.donNom;
 //     const donType = req.body.donType;
 //     const donPoids = req.body.donPoids;
-//     const doneur = req.body.doneur;
+//     const donneur = req.body.donneur;
 //     const donStatus = req.body.donStatus;
 //     const preneur = req.body.preneur;
 
@@ -25,7 +25,7 @@
 //         donNom,
 //         donType,
 //         donPoids,
-//         doneur,
+//         donneur,
 //         donStatus,
 //         preneur,
 
@@ -45,7 +45,7 @@
 //         donNom : req.body.donNom,
 //         donType : req.body.donType,
 //         donPoids : req.body.donPoids,
-//         doneur : req.body.doneur,
+//         donneur : req.body.donneur,
 //         donStatus : req.body.donStatus,
 //         preneur : req.body.preneur,
 //       }}).then (function(){

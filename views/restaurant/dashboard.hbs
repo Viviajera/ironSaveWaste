@@ -1,4 +1,10 @@
 
+
+
+
+
+
+
 <div class="navbar">
   <div class="logout">
   <a href="authentication/login">Logout</a>
@@ -24,53 +30,47 @@
 
     <!--- DONS BOARD --->
         <!---type, date de picked up, montant géneré--->
+{{#each don}}
 <table id="donsList">
   <caption>Dons en attente</caption>
   <thead>
   <tr>
-    <th>Produit donné</th>
-    <th>Date-picked up</th>
-    <th>Montant</th>
+    <th>Produit</th>
+    <th>Type de produit</th>
+    <th>Date de peremption</th>
+    <th>Preneur</th>
+    <th>Status</th>
   </tr>
   </thead>
   <tbody>
     <tr>
               <!---{{#each don.donStatus = picked up}}   a verifier Si le don a un status picked alors pusher dans ce tableau--->
-      <td>{{don.donName}}</td>
-      <td>{{don.datepickedUp}}</td>
-      <td>{{Montant?}}</td> <!--- le montant a remonter par don--->
-    </tr>
-    <tr>
-              <!---{{#each don.donStatus = picked up}}   a verifier Si le don a un status picked alors pusher dans ce tableau--->
-      <td>{{don.donName}}</td>
-      <td>{{don.datepickedUp}}</td>
-      <td>{{Montant?}}</td> <!--- le montant a remonter par don--->
-    </tr>
-    <tr>
-              <!---{{#each don.donStatus = picked up}}   a verifier Si le don a un status picked alors pusher dans ce tableau--->
-      <td>{{don.donName}}</td>
-      <td>{{don.datepickedUp}}</td>
-      <td>{{Montant?}}</td> <!--- le montant a remonter par don--->
-    </tr>
-    <tr>
-              <!---{{#each don.donStatus = picked up}}   a verifier Si le don a un status picked alors pusher dans ce tableau--->
-      <td>{{don.donName}}</td>
-      <td>{{don.datepickedUp}}</td>
-      <td>{{Montant?}}</td> <!--- le montant a remonter par don--->
+      <td>{{donNom}}</td>
+      <td>{{donType}}</td>
+      <td>{{datePeremption}}</td>
+      <td>{{preneur.raisonSociale}}</td>
+      <td>{{donStatus}}</td> 
+      <td><a href="/resto/{{id}}/edit">Edit</a></td>
+      <td><form action="/resto/{{id}}/delete" method="POST"><button>Delete</button></form></td>
     </tr>
   </tbody>
  </table>
+ 
+<form action="/resto/{{id}}/delete" method="POST">
+  <button>Delete</button>
+</form>
+ {{/each}}
       <!--historic & new don--->
 <div class="btns-dashboard">
       <div class="newDon">
         <h2>Vous avez quelque chose à donner? </h2>
         <div class="btn-fairenewDon">
-          <a href="../dons/new.hbs">Faire un nouveau don</a><!---Idem comment calculer ce chiffre--->
+          <a href="/resto/new-donation">Faire un nouveau don</a><!---Idem comment calculer ce chiffre--->
         </div>
       </div>
 
   <div class="btn-historic">
-    <a href="../dons/show.hbs">Voir l'historique total</a><!--- path menant à l'array des dons picked up--->
+    <a href="/resto/historic">Voir l'historique total</a><!--- path menant à l'array des dons picked up--->
   </div>
 </div>
 <!---footer codé dans le layout-->

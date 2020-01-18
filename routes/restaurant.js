@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Don = require("../models/don.js");
+const mongoose = require("mongoose");
 
 // const User = require("../models/user.js");
 
@@ -11,10 +12,17 @@ router.get("/dashboard", ensureLogin.ensureLoggedIn(), function(
   res,
   next
 ) {
-  Don.find()
+  Don.find({
+    donneur: { $in: [mongoose.Types.ObjectId(req.user._id)] }
+  })
+    .populate("donneur")
+    .populate("preneur")
     .then(data => {
+      const ongoingDonations = data.filter(
+        don => don.donStatus === "pending" || don.donStatus === "booked"
+      );
       console.log(data);
-      res.render("restaurant/dashboard", { don: data });
+      res.render("restaurant/dashboard", { don: ongoingDonations });
     })
     .catch(err => {
       console.error("Error: ", err);
@@ -34,7 +42,6 @@ router.post("/new-donation", function(req, res, next) {
   const donNom = req.body.donNom;
   const donType = req.body.donType;
   const donPoids = req.body.donPoids;
-  const donneur = req.body.donneur;
   const datePeremtion = req.body.datePeremtion;
   const donStatus = req.body.donStatus;
   const preneur = req.body.preneur;
@@ -43,7 +50,9 @@ router.post("/new-donation", function(req, res, next) {
     donNom: donNom,
     donType: donType,
     donPoids: donPoids,
-    donneur: donneur,
+    donneur: req.user.id,
+    // TODO remplacer user.id par raisonSocial, il faut require le champs raisonSocial
+    // dans le submit du formulaire pour éviter qu'il soit vide et que ça fasse planter
     datePeremtion: datePeremtion,
     donStatus: donStatus,
     preneur: preneur
@@ -51,17 +60,6 @@ router.post("/new-donation", function(req, res, next) {
     .then(() => res.redirect("/resto/dashboard"))
     .catch(() => res.redirect("/resto/new-donation"));
 });
-
-// router.post("/:id/delete", function(req, res, next) {
-//   Don.deleteOne({
-//     _id: req.params.id
-//   })
-//     .then(() => {
-//       console.log("Don deleted");
-//       res.redirect("/dashboard");
-//     })
-//     .catch(err => next(err));
-// });
 
 router.post("/:id/delete", (req, res, next) => {
   Don.findByIdAndRemove(req.params.id)
