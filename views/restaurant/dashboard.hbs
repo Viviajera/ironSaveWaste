@@ -8,6 +8,10 @@
 {{#each don}}
 <ul>
   <li>{{donNom}}</li>
+  <li>{{donStatus}}</li>
+  <li>preneur : {{preneur.raisonSociale}}</li>
+  <li>donneur : {{donneur.raisonSociale}}</li>
+
 </ul>
 <a href="/resto/{{id}}/edit">Edit</a>
 <form action="/resto/{{id}}/delete" method="POST">

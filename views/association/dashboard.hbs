@@ -2,13 +2,24 @@
   Dashboard ASSO
 </div>
 
+<h2>
+  Il y a dons disponibles
+</h2>
+
 
 {{#each don}}
 <ul>
   <li>{{donNom}}</li>
+  <li>{{donStatus}}</li>
+  <li>donneur : {{donneur.raisonSociale}}</li>
+  <li>preneur : {{preneur.raisonSociale}}</li>
+  <form action="/asso/annule-reservation/{{_id}}" method="POST">
+    <button>Annuler la réservation</button>
+  </form>
+
 </ul>
 {{/each}}
 
 
 <a href="/asso/historic">View historic</a>
-<a href="/asso/donations">View available donations</a>
+<a href="/asso/available-donations">View available donations</a>

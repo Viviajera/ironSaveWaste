@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Don = require("../models/don.js");
+const mongoose = require("mongoose");
 
 // const User = require("../models/user.js");
 
@@ -11,10 +12,17 @@ router.get("/dashboard", ensureLogin.ensureLoggedIn(), function(
   res,
   next
 ) {
-  Don.find()
+  Don.find({
+    donneur: { $in: [mongoose.Types.ObjectId(req.user._id)] }
+  })
+    .populate("donneur")
+    .populate("preneur")
     .then(data => {
+      const ongoingDonations = data.filter(
+        don => don.donStatus === "pending" || don.donStatus === "booked"
+      );
       console.log(data);
-      res.render("restaurant/dashboard", { don: data });
+      res.render("restaurant/dashboard", { don: ongoingDonations });
     })
     .catch(err => {
       console.error("Error: ", err);
@@ -43,7 +51,7 @@ router.post("/new-donation", function(req, res, next) {
     donType: donType,
     donPoids: donPoids,
     donneur: req.user.id,
-    // TODO remplacer user.id par raisonSocial, il faut require le champs raisonSocial 
+    // TODO remplacer user.id par raisonSocial, il faut require le champs raisonSocial
     // dans le submit du formulaire pour éviter qu'il soit vide et que ça fasse planter
     datePeremtion: datePeremtion,
     donStatus: donStatus,
