@@ -10,18 +10,21 @@ a {
 }
 
 .navbar {
-    background-color: #fff;
+    background-color: white;
     display:flex; 
     position:fixed; left:0; top:0; z-index: 99999;
     width:100%;
     font-family: 'Open Sans', sans-serif;
+    align-items: center;
+    justify-content: space-between;
 }
 .navbar img {
     height: 10em;
     margin-left: 35px; 
     margin-bottom: 10px; 
 }
-.login {
+/*.login {
+    justify-self:flex-end; 
     width:70px; 
     height:30px; 
     margin-top:70px; 
@@ -30,9 +33,14 @@ a {
     border: 1px solid #52958D;
     border-radius: 10px;
     background-color: #52958D;
-} 
+}*/
 
-.login a {
+.navbar a {
+    width:70px; 
+    height:30px; 
+    padding:10px 10px;     
+    border: 1px solid #52958D;
+    border-radius: 10px;
     background-color: #52958D;
     color:white; 
     list-style: none;
@@ -40,7 +48,8 @@ a {
     font-weight: bold;
     font-size: 20px;  
     padding:auto; 
-    text-align: center;
+    text-align: center; 
+    margin-right:5em;
 }
 
 
@@ -120,7 +129,7 @@ a {
 }
 
 
-footer ul{ 
+#footer ul{ 
     display: flex; 
     color: #52958D; 
     background-color: white;
@@ -129,18 +138,30 @@ footer ul{
     margin-left:auto;
     padding: 0; 
 }
-footer ul li{
+#footer ul li{
     padding-left: 10px; 
 }
-/*-----------Login page----------*/ 
+/*-----------Login page / signup page----------*/ 
 
 form{
-    margin-top:30%;
+    margin-top: 15em;
+    margin-left:30em;
     display:block; 
-    align-items: center;
-    justify-content: space-around;
 }
-/*-----------Signup page----------*/ 
+form input{
+    border: 1px solid #52958D;   
+}
+button{
+    font-weight: bold;
+    color:white;
+    height:max-content;
+    width: max-content;
+    padding:10px 10px;     
+    border: 1px solid #52958D;
+    border-radius: 10px;
+    background-color: #52958D;
+    font-size:unset;
+}
 /*-----------Dons view----------*/ 
 
 /*-----------Resto dashboard----------*/ 

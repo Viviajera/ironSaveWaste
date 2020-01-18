@@ -1,9 +1,11 @@
+<!---login btn--->
+
 <form action="/auth/signup" method="post">
 
-  <label for="clientType select">Vous êtes... </label>
+  <label for="clientType select">Vous êtes ...</label>
 
   <select required type="text" name="clientType">
-    <option value="">asso ou resto il faut choisir</option>
+    <option value="">assos ou resto ?</option>
     <option value="association">une association</option>
     <option value="restaurant">un restaurant</option>
   </select required>
@@ -78,3 +80,4 @@
   {{/if}}
 
   <button type="submit">Signup</button>
+  </form>
