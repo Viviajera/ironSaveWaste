@@ -1,3 +1,28 @@
-<div>
-  historique de vos dons
+<div class="navbar">
+  <img src= "/images/logo-sw.png" alt="SW logo"/>
+  <a href="authentication/logout">Logout</a>
 </div>
+
+<table id="donsList">
+  <caption>Dons récupérés</caption>
+  <thead>
+  <tr>
+    <th>Produit</th>
+    <th>Type de produit</th>
+    <th>Preneur</th>
+    <th>Status</th>
+    <th>Montant déduit impots</th>
+  </tr>
+  </thead>
+{{#each don}}
+<tbody>
+    <tr>
+      <td>{{donNom}}</td>
+      <td>{{donType}}</td>
+      <td>{{preneur}}</td>
+      <td>{{donStatus}}</td>
+      <td></td>
+    </tr>
+  </tbody>
+   {{/each}}
+ </table>

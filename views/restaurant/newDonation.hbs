@@ -1,23 +1,35 @@
+<div class="navbar">
+  <img src= "/images/logo-sw.png" alt="SW logo"/>
+  <a href="authentication/logout">Logout</a>
+</div>
+
+
 <h2>Publier un nouveau don</h2>
 {{!-- comment envoyer le donateur au moment du new don ??? Mettre en default le créateur du don ? --}}
 <form action="/resto/new-donation" method="POST">
-  <label> Nom du produit :
-    <input type="text" name="donNom" required>
-  </label>
-  <label> Type de produit :
-    <select required type="text" name="donType" required>
-      <option value="légumes">légumes</option>
-      <option value="fruits">fruits</option>
-    </select required>
-  </label>
-
-  <label> Poids du produit (kg) :
-    <input type="text" name="donPoids" required>
-  </label>
-
-  <label> Date de péremption :
-    <input type="date" name="datePeremtion" required>
-  </label>
+  <p>
+    <label> Nom du produit :
+      <input type="text" name="donNom" required>
+    </label>
+  </p>
+  <p>
+    <label> Type de produit :
+      <select required type="text" name="donType" required>
+        <option value="légumes">légumes</option>
+        <option value="fruits">fruits</option>
+      </select required>
+    </label>
+  </p>
+  <p>
+    <label> Poids du produit (kg) :
+      <input type="text" name="donPoids" required>
+    </label>
+  </p>
+  <p>
+    <label> Date de péremption :
+      <input type="date" name="datePeremption" required>
+    </label>
+  </p>
 
   <button>Faire un don</button>
 </form>
