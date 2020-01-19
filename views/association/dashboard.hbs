@@ -2,26 +2,29 @@
   Dashboard ASSO
 </div>
 
-<h2>
-  Il y a dons disponibles
-</h2>
 
-
-{{#each don}}
+{{#each booked}}
 <ul>
   <li>{{donNom}}</li>
   <li>{{donStatus}}</li>
   <li>donneur : {{donneur.raisonSociale}}</li>
   <li>preneur : {{preneur.raisonSociale}}</li>
-  <form action="/asso/annule-reservation/{{_id}}" method="POST">
-    <button>Annuler la réservation</button>
-  </form>
-  <form action="/asso/confirme-recuperation/{{_id}}" method="POST">
-    <button>Confirmer la récupération</button>
-  </form>
-
 </ul>
+<form action="/asso/annule-reservation/{{_id}}" method="POST">
+  <button>Annuler la réservation</button>
+</form>
+<form action="/asso/confirme-recuperation/{{_id}}" method="POST">
+  <button>Confirmer la récupération</button>
+</form>
+<
 {{/each}}
+
+
+<h2>
+  Il y a dons {{nbPendingDonations}} disponibles
+</h2>
+
+
 
 
 <a href="/asso/historic">View historic</a>

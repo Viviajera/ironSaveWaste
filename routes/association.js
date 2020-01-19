@@ -3,8 +3,6 @@ const router = express.Router();
 const Don = require("../models/don.js");
 const mongoose = require("mongoose");
 
-//const User = require("../models/user.js");
-
 const ensureLogin = require("connect-ensure-login");
 
 router.get("/dashboard", ensureLogin.ensureLoggedIn(), function(
@@ -20,10 +18,20 @@ router.get("/dashboard", ensureLogin.ensureLoggedIn(), function(
     .populate("preneur")
     .then(data => {
       console.log(data);
-      // faire un autre find puis faire le count dessus pour avoir le bon nombre
-      // const nbPendingDonations = data.length;
-      // console.log(nbPendingDonations);
-      res.render("association/dashboard", { don: data });
+      Don.find({ donStatus: "pending" })
+        .then(pendingDons => {
+          const nbPendingDonations = pendingDons.length;
+          console.log(nbPendingDonations);
+          return res.render("association/dashboard", {
+            booked: data,
+            nbPendingDonations
+          });
+        })
+        
+        .catch(err => {
+          console.error("Error: ", err);
+          next(err);
+        });
     })
     .catch(err => {
       console.error("Error: ", err);
