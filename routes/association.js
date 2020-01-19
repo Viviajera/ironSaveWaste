@@ -31,10 +31,6 @@ router.get("/dashboard", ensureLogin.ensureLoggedIn(), function(
     });
 });
 
-// router.get("/donations", ensureLogin.ensureLoggedIn(), (req, res) => {
-//   res.render("association/availableDonations", { user: req.user });
-// });
-
 router.get("/available-donations", ensureLogin.ensureLoggedIn(), function(
   req,
   res,
@@ -55,9 +51,13 @@ router.get("/available-donations", ensureLogin.ensureLoggedIn(), function(
 });
 
 router.get("/historic", ensureLogin.ensureLoggedIn(), function(req, res, next) {
-  Don.find({ donStatus: "pickedUp" })
+  Don.find({
+    donStatus: "pickedUp",
+    preneur: { $in: [mongoose.Types.ObjectId(req.user._id)] }
+  })
+    .populate("preneur")
+    .populate("donneur")
     .then(data => {
-      console.log(data);
       res.render("association/historic", { don: data });
     })
     .catch(err => {
@@ -85,8 +85,20 @@ router.post("/annule-reservation/:id", (req, res, next) => {
     { _id: req.params.id },
     {
       $set: {
-        donStatus: "pending",
-        preneur: req.user._id
+        donStatus: "pending"
+      }
+    }
+  )
+    .then(don => res.redirect("/asso/dashboard"))
+    .catch(err => next(err));
+});
+
+router.post("/confirme-recuperation/:id", (req, res, next) => {
+  Don.update(
+    { _id: req.params.id },
+    {
+      $set: {
+        donStatus: "pickedUp"
       }
     }
   )
