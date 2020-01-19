@@ -30,6 +30,16 @@ router.get("/dashboard", ensureLogin.ensureLoggedIn(), function(
     });
 });
 
+// il me dit encore que ce putain de nbMealGiven est undefined je comprends pas pq bordel
+// Don.find({ donStatus: "pickedUp" }).then(foodSaved => {
+//         const nbMealGiven = foodSaved.length;
+//         console.log(nbMealGiven);
+//       });
+//       return res.render("restaurant/dashboard", {
+//         pending: ongoingDonations,
+//         nbMealGiven
+//       });
+
 router.get("/historic", ensureLogin.ensureLoggedIn(), (req, res) => {
   res.render("restaurant/historic", { user: req.user });
 });

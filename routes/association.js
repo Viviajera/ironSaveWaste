@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const Don = require("../models/don.js");
 const mongoose = require("mongoose");
-
 const ensureLogin = require("connect-ensure-login");
 
 router.get("/dashboard", ensureLogin.ensureLoggedIn(), function(
@@ -10,32 +9,36 @@ router.get("/dashboard", ensureLogin.ensureLoggedIn(), function(
   res,
   next
 ) {
-  Don.find({
-    donStatus: "booked",
-    preneur: { $in: [mongoose.Types.ObjectId(req.user._id)] }
-  })
-    .populate("donneur")
-    .populate("preneur")
+  Promise.all([
+    // [0]
+    Don.find({
+      donStatus: "booked",
+      preneur: { $in: [mongoose.Types.ObjectId(req.user._id)] }
+    })
+      .populate("donneur")
+      .populate("preneur"),
+    // [1]
+    Don.find({ donStatus: "pending" }),
+    // [2]
+    Don.find({ donStatus: "pickedUp" })
+  ])
     .then(data => {
-      console.log(data);
-      Don.find({ donStatus: "pending" })
-        .then(pendingDons => {
-          const nbPendingDonations = pendingDons.length;
-          console.log(nbPendingDonations);
-          return res.render("association/dashboard", {
-            booked: data,
-            nbPendingDonations
-          });
-        })
-        
-        .catch(err => {
-          console.error("Error: ", err);
-          next(err);
-        });
+      const bookedDons = data[0];
+      const pendingDons = data[1];
+      const pickedUpDons = data[2];
+
+      const nbPendingDonations = pendingDons.length;
+      const nbPickedUpDonations = pickedUpDons.length;
+
+      return res.render("association/dashboard", {
+        booked: bookedDons,
+        nbPendingDonations,
+        nbPickedUpDonations
+      });
     })
     .catch(err => {
-      console.error("Error: ", err);
-      next(err);
+      console.error(err);
+      return next(err);
     });
 });
 
