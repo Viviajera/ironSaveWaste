@@ -12,37 +12,45 @@ router.get("/dashboard", ensureLogin.ensureLoggedIn(), function(
   res,
   next
 ) {
-  Don.find({
-    donneur: { $in: [mongoose.Types.ObjectId(req.user._id)] }
-  })
-    .populate("donneur")
-    .populate("preneur")
+  Promise.all([
+    // [0]
+    Don.find({
+      donStatus: { $in: ["booked", "pending"] },
+      preneur: { $in: [mongoose.Types.ObjectId(req.user._id)] }
+    })
+      .populate("donneur")
+      .populate("preneur"),
+    // [1]
+    Don.find({
+      donStatus: "pickedUp",
+      preneur: { $in: [mongoose.Types.ObjectId(req.user._id)] }
+    })
+      .populate("donneur")
+      .populate("preneur")
+  ])
     .then(data => {
-      const ongoingDonations = data.filter(
-        don => don.donStatus === "pending" || don.donStatus === "booked"
-      );
-      console.log(data);
-      res.render("restaurant/dashboard", { don: ongoingDonations });
+      const onGoingDons = data[0];
+      const terminatedDons = data[1];
+
+      const nbMealGiven = terminatedDons.length;
+      console.log({ nbMealGiven });
+      return res.render("restaurant/dashboard", {
+        booked: onGoingDons,
+        nbMealGiven,
+        savings: nbMealGiven * 7,
+        avoidedEmissions: nbMealGiven * 20
+      });
     })
     .catch(err => {
-      console.error("Error: ", err);
-      next(err);
+      console.error(err);
+      return next(err);
     });
 });
-
-// il me dit encore que ce putain de nbMealGiven est undefined je comprends pas pq bordel
-// Don.find({ donStatus: "pickedUp" }).then(foodSaved => {
-//         const nbMealGiven = foodSaved.length;
-//         console.log(nbMealGiven);
-//       });
-//       return res.render("restaurant/dashboard", {
-//         pending: ongoingDonations,
-//         nbMealGiven
-//       });
 
 router.get("/historic", ensureLogin.ensureLoggedIn(), (req, res) => {
   res.render("restaurant/historic", { user: req.user });
 });
+//TO DO
 
 router.get("/new-donation", ensureLogin.ensureLoggedIn(), (req, res) => {
   res.render("restaurant/newDonation", { user: req.user });
