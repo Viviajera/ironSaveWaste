@@ -20,7 +20,10 @@ router.get("/dashboard", ensureLogin.ensureLoggedIn(), function(
     // [1]
     Don.find({ donStatus: "pending" }),
     // [2]
-    Don.find({ donStatus: "pickedUp" })
+    Don.find({
+      donStatus: "pickedUp",
+      preneur: { $in: [mongoose.Types.ObjectId(req.user._id)] }
+    })
   ])
     .then(data => {
       const bookedDons = data[0];

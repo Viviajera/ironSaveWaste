@@ -16,14 +16,14 @@ router.get("/dashboard", ensureLogin.ensureLoggedIn(), function(
     // [0]
     Don.find({
       donStatus: { $in: ["booked", "pending"] },
-      preneur: { $in: [mongoose.Types.ObjectId(req.user._id)] }
+      donneur: { $in: [mongoose.Types.ObjectId(req.user._id)] }
     })
       .populate("donneur")
       .populate("preneur"),
     // [1]
     Don.find({
       donStatus: "pickedUp",
-      preneur: { $in: [mongoose.Types.ObjectId(req.user._id)] }
+      donneur: { $in: [mongoose.Types.ObjectId(req.user._id)] }
     })
       .populate("donneur")
       .populate("preneur")
@@ -31,11 +31,10 @@ router.get("/dashboard", ensureLogin.ensureLoggedIn(), function(
     .then(data => {
       const onGoingDons = data[0];
       const terminatedDons = data[1];
-
       const nbMealGiven = terminatedDons.length;
       console.log({ nbMealGiven });
       return res.render("restaurant/dashboard", {
-        booked: onGoingDons,
+        bookedAndPending: onGoingDons,
         nbMealGiven,
         savings: nbMealGiven * 7,
         avoidedEmissions: nbMealGiven * 20
@@ -47,10 +46,32 @@ router.get("/dashboard", ensureLogin.ensureLoggedIn(), function(
     });
 });
 
-router.get("/historic", ensureLogin.ensureLoggedIn(), (req, res) => {
-  res.render("restaurant/historic", { user: req.user });
+router.get("/historic", ensureLogin.ensureLoggedIn(), function(req, res, next) {
+  Promise.all([
+    // [0]
+    Don.find({
+      donStatus: { $in: ["pickedUp"] },
+      donneur: { $in: [mongoose.Types.ObjectId(req.user._id)] }
+    })
+      .populate("donneur")
+      .populate("preneur")
+  ])
+    .then(data => {
+      const historicDons = data[0];
+      return res.render("restaurant/historic", {
+        pickedUp: historicDons
+      });
+    })
+    .catch(err => {
+      console.error(err);
+      return next(err);
+    });
 });
-//TO DO
+
+// router.get("/historic", ensureLogin.ensureLoggedIn(), (req, res) => {
+//   res.render("restaurant/historic", { user: req.user });
+// });
+// //TO DO
 
 router.get("/new-donation", ensureLogin.ensureLoggedIn(), (req, res) => {
   res.render("restaurant/newDonation", { user: req.user });

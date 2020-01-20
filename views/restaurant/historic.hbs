@@ -1,4 +1,13 @@
 <div>
-  historique de vos dons TO DO 
+  historique de vos dons TO DO
 </div>
 
+
+{{#each pickedUp}}
+<ul>
+  <li>{{donNom}}</li>
+  <li>{{donStatus}}</li>
+  <li>{{preneur.raisonSociale}}</li>
+
+</ul>
+{{/each}}

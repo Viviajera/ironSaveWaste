@@ -14,26 +14,23 @@
     <div class="kpi">
       <h2>Vos économies</h2>
       <h3>{{savings}}€</h3>
-      <!---ce chiffre doit varier en fonction du "taxe generator"--->
     </div>
 
     <div class="kpi">
       <h2>Répas donnés</h2>
       <h3>{{nbMealGiven}}</h3>
-      <!---Idem comment calculer ce chiffre--->
     </div>
 
     <div class="kpi">
       <h2>Emissions evitées</h2>
       <h3>{{avoidedEmissions}} kg Co2</h3>
-      <!---Emissions CO2 diesel pour 1kg de déchets x n° kilos donnés--->
     </div>
   </section>
 
   <!--- DONS BOARD --->
 
 
-  {{#each don}}
+  {{#each bookedAndPending}}
   <table id="donsList">
     <caption>Dons en attente</caption>
     <thead>
