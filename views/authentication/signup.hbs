@@ -1,15 +1,23 @@
-<!---login btn--->
+<div class="navbar">
+  <img src= "/images/logo-sw.png" alt="SW logo"/>
+  <a href="authentication/login">Login</a>
+</div>
+
+<!---form signup--->
+<div class="bodyForm">
+   <div class="imgLogin">
+    <img src="/images/restaurateurs.png" alt="resto"/>
+    <img src="/images/assos-bleue.png" alt="asso"/>
+ </div>
 
 <form action="/auth/signup" method="post">
-
-  <label for="clientType select">Vous êtes ...</label>
-
-  <select required type="text" name="clientType">
+  <label for="clientType select">Vous êtes ...
+    <select required type="text" name="clientType">
     <option value="">assos ou resto ?</option>
     <option value="association">une association</option>
     <option value="restaurant">un restaurant</option>
   </select required>
-
+</label>
   <p>
     <label>
       Raison Sociale:
@@ -81,3 +89,4 @@
 
   <button type="submit">Signup</button>
   </form>
+  </div>
