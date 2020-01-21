@@ -51,6 +51,7 @@ router.get("/available-donations", ensureLogin.ensureLoggedIn(), function(
   next
 ) {
   Don.find()
+    .populate("donneur")
     .then(data => {
       const availableDonations = data.filter(
         don => don.donStatus === "pending"
@@ -91,6 +92,22 @@ router.post("/reserve-don/:id", (req, res, next) => {
     }
   )
     .then(don => res.redirect("/asso/dashboard"))
+    .catch(err => next(err));
+});
+
+router.post("/recupere-reservation/:id", (req, res, next) => {
+  Don.update(
+    { _id: req.params.id },
+    {
+      $set: {
+        donStatus: "pickedUp"
+      }
+    }
+  )
+    .then(don => {
+      res.redirect("/asso/dashboard");
+    })
+
     .catch(err => next(err));
 });
 

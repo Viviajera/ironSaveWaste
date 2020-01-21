@@ -1,81 +1,76 @@
-{{!-- <div class="navbar">
-  <div class="logout">
-    <a href="authentication/logout">Logout</a>
+<div class="navbar">
+  <img src="/images/logo-sw.png" alt="SW logo" />
+  <a href="authentication/logout">Logout</a>
+</div>
+
+​
+<!---KPI section--->
+<div class="helloUser">
+  <h1>Bonjour{{{user.username}}}</h1>
+</div>
+<section id="kpiSection">
+  <div class="kpi">
+    <h2>Vos économies</h2>
+    <h3>{{savings}}€</h3>
+  </div>
+
+  <div class="kpi">
+    <h2>Répas donnés</h2>
+    <h3>{{nbMealGiven}}</h3>
+  </div>
+
+  <div class="kpi">
+    <h2>Emissions evitées</h2>
+    <h3>{{avoidedEmissions}} kg Co2</h3>
+  </div>
+</section>
+
+
+<!--- DONS BOARD --->
+<!---type, date de picked up, montant géneré--->
+
+<table id="donsList">
+  <caption>Dons en attente</caption>
+  <thead>
+    <tr>
+      <th>Produit</th>
+      <th>Type de produit</th>
+      <th>Date de peremption</th>
+      <th>Preneur</th>
+      <th>Status</th>
+      <th>Editer</th>
+      <th>Supprimer</th>
+    </tr>
+  </thead>
+  {{#each bookedAndPending}}
+  <tbody>
+    <tr>
+      <td>{{donNom}}</td>
+      <td>{{donType}}</td>
+      <td>{{datePeremptionFormatted}}</td>
+      <td>{{preneur.raisonSociale}}</td>
+      <td>{{donStatus}}</td>
+      <td><a href="/resto/{{id}}/edit"><button>Modifier</button></a></td>
+      <td>
+        <form action="/resto/{{id}}/delete" method="POST" class="btn-delete"><button>Supprimer</button></form>
+      </td>
+    </tr>
+  </tbody>
+  {{/each}}
+</table>
+
+<!--historic & new don--->
+<div class="btns-dashboard">
+  <div class="newDon">
+    <h2>Vous avez quelque chose à donner? </h2>
+    <div class="btn-fairenewDon">
+      <a href="/resto/new-donation">Faire un nouveau don</a>
+      <!---Idem comment calculer ce chiffre--->
+    </div>
   </div>
 </div>
 
-​ --}}
-
-<!---KPI section--->
-
-<div class="helloUser">
-  {{!-- <h1>Bonjour{{{user.name}}}</h1></div> --}}
-  <section id="kpiSection">
-    <div class="kpi">
-      <h2>Vos économies</h2>
-      <h3>{{savings}}€</h3>
-    </div>
-
-    <div class="kpi">
-      <h2>Répas donnés</h2>
-      <h3>{{nbMealGiven}}</h3>
-    </div>
-
-    <div class="kpi">
-      <h2>Emissions evitées</h2>
-      <h3>{{avoidedEmissions}} kg Co2</h3>
-    </div>
-  </section>
-
-  <!--- DONS BOARD --->
-
-
-  {{#each bookedAndPending}}
-  <table id="donsList">
-    <caption>Dons en attente</caption>
-    <thead>
-      <tr>
-        <th>Produit</th>
-        <th>Type de produit</th>
-        <th>Date de peremption</th>
-        <th>Preneur</th>
-        <th>Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>{{donNom}}</td>
-        <td>{{donType}}</td>
-        <td>{{datePeremption}}</td>
-        <td>{{preneur.raisonSociale}}</td>
-        <td>{{donStatus}}</td>
-        <td><a href="/resto/{{id}}/edit">Edit</a></td>
-        <td>
-          <form action="/resto/{{id}}/delete" method="POST"><button>Delete</button></form>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-  {{/each}}
-
-
-
-  <!--historic & new don--->
-
-
-
-  <div class="btns-dashboard">
-    <div class="newDon">
-      <h2>Vous avez quelque chose à donner? </h2>
-      <div class="btn-fairenewDon">
-        <a href="/resto/new-donation">Faire un nouveau don</a>
-        <!---Idem comment calculer ce chiffre--->
-      </div>
-    </div>
-
-    <div class="btn-historic">
-      <a href="/resto/historic">Voir l'historique total</a>
-      <!--- path menant à l'array des dons picked up--->
-    </div>
-  </div>>
+<div class="btn-historic">
+  <a href="/resto/historic">Voir l'historique</a>
+  <!--- path menant à l'array des dons picked up--->
+</div>

@@ -10,7 +10,7 @@ const donSchema = Schema({
   },
   donPoids: Number,
   donneur: { type: Schema.Types.ObjectId, ref: "User" },
-  datePeremtion: Date,
+  datePeremption: Date,
   donStatus: {
     type: String,
     enum: ["pending", "booked", "pickedUp"],

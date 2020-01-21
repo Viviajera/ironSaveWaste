@@ -1,28 +1,46 @@
-<h2>avalaible donation list</h2>
+<div class="navbar">
+  <img src="/images/logo-sw.png" alt="SW logo" />
+  <a href="authentication/logout">Logout</a>
+</div>
 
-{{#each don}}
-<ul>
-  <li>{{donNom}}</li>
-  <li>{{donneur}}</li>
-  <li>{{donStatus}}</li>
-  <li>{{donPoids}}</li>
+<div class="findDons">
+  <table id="donsList">
+    <caption>Dons disponibles</caption>
+    <thead>
+      <tr>
+        <th>Produit</th>
+        <th>Type de produit</th>
+        <th>Poids</th>
+        <th>Date de peremption</th>
+        <th>Donneur</th>
+        <th>Status</th>
+        <th>Reserver</th>
+      </tr>
+    </thead>
+    {{#each don}}
+    <tbody>
+      <tr>
+        <td>{{donNom}}</td>
+        <td>{{donType}}</td>
+        <td>{{donPoids}}</td>
+        <td>{{datePeremption}}</td>
+        <td>{{donneur.raisonSociale}}</td>
+        <td>{{donStatus}}</td>
+        <td>
+          <form action="/asso/reserve-don/{{_id}}" method="POST"><button>Réserver</button></form>
+        </td>
+      </tr>
+    </tbody>
+    {{/each}}
+  </table>
 
+  <div class="donation-map"></div>
 
-  <form action="/asso/reserve-don/{{_id}}" method="POST">
-    <button>Réserver</button>
-  </form>
+  <script>
+    var alldons = {{{ json don }}};
+  </script>
 
-</ul>
-{{/each}}
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3a3zhkAEBIXPnrBSIC1H-nNxQNtu8ljc"></script>
 
-
-<h3>My First Map</h3>
-<div class="donation-map"></div>
-
-<script>
-  var alldons = {{{ json don }}};
-</script>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3a3zhkAEBIXPnrBSIC1H-nNxQNtu8ljc"></script>
-
-<script type="text/javascript" src="/javascripts/main.js"></script>
+  <script type="text/javascript" src="/javascripts/main.js"></script>
+</div>

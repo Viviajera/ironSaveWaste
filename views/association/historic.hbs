@@ -1,15 +1,28 @@
-<div>
-  This is history
+<div class="navbar">
+  <img src="/images/logo-sw.png" alt="SW logo" />
+  <a href="authentication/logout">Logout</a>
 </div>
 
-{{#each don}}
-<ul>
-  <li>{{donNom}}</li>
-  <li>{{donStatus}}</li>
-  <li>{{preneur.raisonSociale}}</li>
-  <li>{{donneur.raisonSociale}}</li>
-
-
-
-</ul>
-{{/each}}
+<table id="historicDonsList">
+  <caption>Dons récupérés</caption>
+  <thead>
+    <tr>
+      <th>Produit</th>
+      <th>Type de produit</th>
+      <th>Poids</th>
+      <th>Doneur</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  {{#each don}}
+  <tbody>
+    <tr>
+      <td>{{donNom}}</td>
+      <td>{{donType}}</td>
+      <td>{{donPoids}}</td>
+      <td>{{donneur.raisonSociale}}</td>
+      <td>{{donStatus}}</td>
+    </tr>
+  </tbody>
+  {{/each}}
+</table>

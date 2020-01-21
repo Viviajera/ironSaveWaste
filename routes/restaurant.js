@@ -2,9 +2,6 @@ const express = require("express");
 const router = express.Router();
 const Don = require("../models/don.js");
 const mongoose = require("mongoose");
-
-// const User = require("../models/user.js");
-
 const ensureLogin = require("connect-ensure-login");
 
 router.get("/dashboard", ensureLogin.ensureLoggedIn(), function(
@@ -33,6 +30,16 @@ router.get("/dashboard", ensureLogin.ensureLoggedIn(), function(
       const terminatedDons = data[1];
       const nbMealGiven = terminatedDons.length;
       console.log({ nbMealGiven });
+
+      onGoingDons.forEach(don => {
+        const d = don.datePeremption;
+
+        const jour = d.getDate();
+        const mois = d.getMonth() + 1;
+        const annee = d.getFullYear();
+        don.datePeremptionFormatted = `${jour}/${mois}/${annee}`;
+      });
+
       return res.render("restaurant/dashboard", {
         bookedAndPending: onGoingDons,
         nbMealGiven,
@@ -68,11 +75,6 @@ router.get("/historic", ensureLogin.ensureLoggedIn(), function(req, res, next) {
     });
 });
 
-// router.get("/historic", ensureLogin.ensureLoggedIn(), (req, res) => {
-//   res.render("restaurant/historic", { user: req.user });
-// });
-// //TO DO
-
 router.get("/new-donation", ensureLogin.ensureLoggedIn(), (req, res) => {
   res.render("restaurant/newDonation", { user: req.user });
 });
@@ -81,7 +83,7 @@ router.post("/new-donation", function(req, res, next) {
   const donNom = req.body.donNom;
   const donType = req.body.donType;
   const donPoids = req.body.donPoids;
-  const datePeremtion = req.body.datePeremtion;
+  const datePeremption = req.body.datePeremption;
   const donStatus = req.body.donStatus;
   const preneur = req.body.preneur;
   const lat = req.body.lat;
@@ -92,7 +94,7 @@ router.post("/new-donation", function(req, res, next) {
     donType: donType,
     donPoids: donPoids,
     donneur: req.user.id,
-    datePeremtion: datePeremtion,
+    datePeremption: datePeremption,
     donStatus: donStatus,
     preneur: preneur,
     donGeoloc: {
