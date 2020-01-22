@@ -1,13 +1,33 @@
 <h2>Edit {{donNom}}</h2>
-
+<div class="edit">
+<img src="/images/chef-clown.png" alt="chef"/>
 <form action="/resto/{{don.id}}" method="POST">
   <p>
     <label>
-      Nom:
+      Nom du produit:
       <input type="text" name="donNom" value="{{don.donNom}}">
     </label>
   </p>
-
-
-  <button>Mettre à jour le don</button>
+  <p>
+    <label> 
+      Type de produit :
+      <select type="text" name="donType" value="{{don.donType}}">
+        <option value="légumes">légumes</option>
+        <option value="fruits">fruits</option>
+      </select>
+    </label>
+  </p>
+  <p>
+    <label> 
+      Poids du produit (kg) :
+      <input type="text" name="donPoids" value="{{don.donType}}">
+    </label>
+  </p>
+  <p>
+    <label> Date de péremption :
+      <input type="date" name="datePeremption" value="{{don.datePeremption}}">
+    </label>
+  </p>
+  <button class="btn">Mettre à jour le don</button>
 </form>
+</div>

@@ -36,18 +36,6 @@ a {
     margin-bottom: 10px;
 }
 
-/*.login {
-    justify-self:flex-end; 
-    width:70px; 
-    height:30px; 
-    margin-top:70px; 
-    margin-left:40%;
-    padding:10px 10px;     
-    border: 1px solid #52958D;
-    border-radius: 10px;
-    background-color: #52958D;
-}*/
-
 .navbar a {
     width: 70px;
     height: 30px;
@@ -68,7 +56,6 @@ a {
 
 .section1 {
     font-family: 'Open Sans', sans-serif;
-
     margin-top: 3em;
     display: flex;
     background-image: url("../images/landing.png");
@@ -76,7 +63,6 @@ a {
     background-position: center;
     height: 70vh;
     color: #fff;
-
 }
 
 .section1,
@@ -97,14 +83,12 @@ a {
     text-align: center;
 }
 
-
 #section2 {
     align-items: center;
     display: flex;
     background-color: white;
     font-family: 'Open Sans', sans-serif;
     margin: 30px;
-    justify-content: space-evenly;
 }
 
 .restaurateurSignup {
@@ -112,26 +96,13 @@ a {
     text-align: center;
 }
 
-.formNewDon {
-    margin-top: 15em;
-    margin-left: 30em;
-}
-
-.restaurateurSignup img {
-    width: 50%;
-    border-radius: 10px;
-}
-
 .assosSignup {
     display: flex;
     text-align: center;
-    justify-content: space-between;
 }
 
-.assosSignup img {
-    height: 18em;
-    width: 14em;
-    object-fit: cover;
+.restaurateurSignup img, .assosSignup img {
+    width: 30%;
     border-radius: 10px;
 }
 
@@ -144,18 +115,21 @@ a {
     border: 1px solid #52958D;
     border-radius: 10px;
     background-color: #52958D;
-
-    flex: 1;
-    margin-top: 6em;
 }
 
 .restaurateurSignup h3,
 .assosSignup h3 {
+    text-align: center;
     margin-top: auto;
     font-size: 150%;
     padding-bottom: .10em;
     color: #52958D;
     padding: 10px 10px;
+}
+.restaurateurSignup ul,
+.assosSignup ul {
+    text-align:left;
+    text-decoration:none;
 }
 
 .restaurateurSignup p,
@@ -163,15 +137,12 @@ a {
     padding: 10px 10px;
 }
 
-
-
 #footer ul {
     display: flex;
     color: #52958D;
     background-color: white;
     list-style: none;
     justify-content: center;
-
     margin-left: auto;
     padding: 0;
     align-items: flex-end;
@@ -185,7 +156,6 @@ a {
 #footer p {
     color: #52958D;
     text-align: center;
-
 }
 
 /*//    _      ____   _____ _____ _   _     _______ _____ _____ _   _ _    _ _____  
@@ -278,7 +248,7 @@ label {
 #donsList {
     font-size: 20px;
     margin-top: 15em;
-    margin: auto;
+    margin :auto;
     justify-content: center;
     font-style: sans-serif;
     border-radius: 10px;
@@ -316,6 +286,7 @@ label {
 .btns-dashboard {
     display: flex;
     justify-content: space-evenly;
+    margin-top:3em; 
 }
 
 .btn-historic {
@@ -368,6 +339,36 @@ label {
     margin: auto;
 }
 
+.edit{
+    display:flex;
+    margin-top:15em;
+    justify-content: space-evenly;
+}
+.edit h2{
+    color:#52958D
+}
+
+/*//    _____   ____  _   _  _____  __      _______ ________          __
+//   |  __ \ / __ \| \ | |/ ____| \ \    / /_   _|  ____\ \        / /
+//   | |  | | |  | |  \| | (___    \ \  / /  | | | |__   \ \  /\  / / 
+//   | |  | | |  | | . ` |\___ \    \ \/ /   | | |  __|   \ \/  \/ /  
+//   | |__| | |__| | |\  |____) |    \  /   _| |_| |____   \  /\  /   
+//   |_____/ \____/|_| \_|_____/      \/   |_____|______|   \/  \/    
+//                                                                    
+// */
+
+.findDons {
+    display: block;
+    margin-top: 10em;
+}
+
+.donation-map {
+    width: 70vh;
+    height: 50vh;
+    margin-left: 15em;
+    margin-top: 2em;
+}
+
 /*
 //    _    _ _____  _____ _______ ____  _____  _____ _____  __      _______ ________          _______ 
 //   | |  | |_   _|/ ____|__   __/ __ \|  __ \|_   _/ ____| \ \    / /_   _|  ____\ \        / / ____|
@@ -377,11 +378,6 @@ label {
 //   |_|  |_|_____|_____/   |_|  \____/|_|  \_\_____\_____|     \/   |_____|______|   \/  \/  |_____/ 
 //                                                                                                    
 //*/
-
-.findDons {
-    display: block;
-    margin-top: 10em;
-}
 
 #historicDonsList {
     font-size: 20px;
@@ -395,9 +391,3 @@ label {
     border: 1px solid #52958D;
 }
 
-.donation-map {
-    width: 100vh;
-    height: 50vh;
-    margin-left: 23em;
-    margin-top: 2em;
-}
