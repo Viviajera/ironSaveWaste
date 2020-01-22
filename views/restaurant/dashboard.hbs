@@ -5,7 +5,7 @@
 
 <!---KPI section--->
 <div class="helloUser">
-  <h1>Bonjour{{user.raisonSociale}}</h1>
+  <h1>Bonjour {{nomBonjour}} ! </h1>
 </div>
 <section id="kpiSection">
   <div class="kpi">
@@ -49,7 +49,9 @@
       <td>{{preneur.raisonSociale}}</td>
       <td>{{donStatus}}</td>
       <td><a href="/resto/{{id}}/edit"><button>Modifier</button></a></td>
-      <td><form action="/resto/{{id}}/delete" method="POST" class="btn-delete"><button>Supprimer</button></form></td>
+      <td>
+        <form action="/resto/{{id}}/delete" method="POST" class="btn-delete"><button>Supprimer</button></form>
+      </td>
     </tr>
   </tbody>
   {{/each}}

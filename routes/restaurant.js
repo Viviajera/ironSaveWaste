@@ -29,11 +29,9 @@ router.get("/dashboard", ensureLogin.ensureLoggedIn(), function(
       const onGoingDons = data[0];
       const terminatedDons = data[1];
       const nbMealGiven = terminatedDons.length;
-      console.log({ nbMealGiven });
 
       onGoingDons.forEach(don => {
         const d = don.datePeremption;
-        // AJOUTER LE USER NAME : TO DO
         const jour = d.getDate();
         const mois = d.getMonth() + 1;
         const annee = d.getFullYear();
@@ -44,7 +42,8 @@ router.get("/dashboard", ensureLogin.ensureLoggedIn(), function(
         bookedAndPending: onGoingDons,
         nbMealGiven,
         savings: nbMealGiven * 7,
-        avoidedEmissions: nbMealGiven * 20
+        avoidedEmissions: nbMealGiven * 20,
+        nomBonjour: req.user.raisonSociale
       });
     })
     .catch(err => {

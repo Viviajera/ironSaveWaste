@@ -33,18 +33,20 @@ router.get("/dashboard", ensureLogin.ensureLoggedIn(), function(
       const nbPendingDonations = pendingDons.length;
       const nbPickedUpDonations = pickedUpDons.length;
 
-      bookedDons.forEach(don => {
-        const d = don.datePeremption;
-        const jour = d.getDate();
-        const mois = d.getMonth() + 1;
-        const annee = d.getFullYear();
-        don.datePeremptionFormatted = `${jour}/${mois}/${annee}`;
-      });
+      // bookedDons.forEach(don => {
+      //   const d = don.datePeremption;
+      //   const jour = d.getDate();
+      //   const mois = d.getMonth() + 1;
+      //   const annee = d.getFullYear();
+      //   don.datePeremptionFormatted = `${jour}/${mois}/${annee}`;
+      // });
 
       return res.render("association/dashboard", {
         booked: bookedDons,
         nbPendingDonations,
-        nbPickedUpDonations
+        avoidedEmissions: nbPickedUpDonations * 20,
+        nbPickedUpDonations,
+        nomBonjour: req.user.raisonSociale
       });
     })
     .catch(err => {
@@ -65,6 +67,15 @@ router.get("/available-donations", ensureLogin.ensureLoggedIn(), function(
         don => don.donStatus === "pending"
       );
       console.log(data);
+
+      availableDonations.forEach(don => {
+        const d = don.datePeremption;
+        const jour = d.getDate();
+        const mois = d.getMonth() + 1;
+        const annee = d.getFullYear();
+        don.datePeremptionFormatted = `${jour}/${mois}/${annee}`;
+      });
+
       res.render("association/availableDonations", { don: availableDonations });
     })
     .catch(err => {

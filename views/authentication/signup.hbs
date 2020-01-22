@@ -1,92 +1,92 @@
 <div class="navbar">
-  <img src= "/images/logo-sw.png" alt="SW logo"/>
+  <img src="/images/logo-sw.png" alt="SW logo" />
   <a href="/auth/login">Login</a>
 </div>
 
 <!---form signup--->
 <div class="bodyForm">
-   <div class="imgLogin">
-    <img src="/images/restaurateurs.png" alt="resto"/>
-    <img src="/images/assos-bleue.png" alt="asso"/>
- </div>
-
-<form action="/auth/signup" method="post">
-  <label for="clientType select">Vous êtes ...
-    <select required type="text" name="clientType">
-    <option value="">assos ou resto ?</option>
-    <option value="association">une association</option>
-    <option value="restaurant">un restaurant</option>
-  </select required>
-</label>
-  <p>
-    <label>
-      Raison Sociale:
-      <input type="text" name="raisonSociale" required>
-    </label>
-  </p>
-
-  <p>
-    <label>
-      Contact:
-      <input type="text" name="contact">
-    </label>
-  </p>
-
-  <p>
-    <label>
-      mail:
-      <input type="text" name="username">
-    </label>
-  </p>
-
-  <p>
-    <label>
-      Password:
-      <input type="password" name="password">
-    </label>
-  </p>
-
-  <p>
-    <label>
-      Portable:
-      <input type="text" name="portable">
-    </label>
-  </p>
-
-  <p>
-    <label>
-      Siret (uniquement restaurateurs):
-      <input type="number" name="siret">
-    </label>
-  </p>
-  <a>
-    Adresse
-  </a>
-  <p>
-    <label>
-      Rue:
-      <input type="text" name="street">
-    </label>
-  </p>
-
-  <p>
-    <label>
-      Code Postal:
-      <input type="number" name="zipCode">
-    </label>
-  </p>
-
-  <p>
-    <label>
-      Ville:
-      <input type="text" name="city">
-    </label>
-  </p>
-
-  {{#if errorMessage}}
-  <div class="error-message">{{errorMessage}}</div>
-  {{/if}}
-
-  <button type="submit">Signup</button>
-  </form>
+  <div class="imgLogin">
+    <img src="/images/restaurateurs.png" alt="resto" />
+    <img src="/images/assos-bleue.png" alt="asso" />
   </div>
+
+  <form action="/auth/signup" method="post">
+    <label for="clientType select">Vous êtes ...
+      <select required type="text" name="clientType">
+        <option value="">une association ou un restaurant </option>
+        <option value="association">une association</option>
+        <option value="restaurant">un restaurant</option>
+      </select required>
+    </label>
+    <p>
+      <label>
+        Nom de l'enseigne :
+        <input type="text" name="raisonSociale" required>
+      </label>
+    </p>
+
+    {{!-- <p>
+      <label>
+        Contact:
+        <input type="text" name="contact">
+      </label>
+    </p> --}}
+
+    <p>
+      <label>
+        Email:
+        <input type="text" name="username">
+      </label>
+    </p>
+
+    <p>
+      <label>
+        Password:
+        <input type="password" name="password">
+      </label>
+    </p>
+
+    {{!-- <p>
+      <label>
+        Portable:
+        <input type="text" name="portable">
+      </label>
+    </p> --}}
+
+    {{!-- <p>
+      <label>
+        Siret (uniquement restaurateurs):
+        <input type="number" name="siret">
+      </label>
+    </p> --}}
+    {{!-- <a>
+      Adresse
+    </a>
+    <p>
+      <label>
+        Rue:
+        <input type="text" name="street">
+      </label>
+    </p>
+
+    <p>
+      <label>
+        Code Postal:
+        <input type="number" name="zipCode">
+      </label>
+    </p>
+
+    <p>
+      <label>
+        Ville:
+        <input type="text" name="city">
+      </label>
+    </p> --}}
+
+    {{#if errorMessage}}
+    <div class="error-message">{{errorMessage}}</div>
+    {{/if}}
+
+    <button type="submit">Signup</button>
+  </form>
+</div>

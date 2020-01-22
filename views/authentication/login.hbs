@@ -1,33 +1,33 @@
 <div class="navbar">
-  <img src= "/images/logo-sw.png" alt="SW logo"/>
+  <img src="/images/logo-sw.png" alt="SW logo" />
   <a href="/auth/signup">Signup</a>
 </div>
 
 
 <div class="bodyForm">
   <div class="imgLogin">
-    <img src="/images/assos-bleue.png" alt="asso"/>
-    <img src="/images/restaurateurs.png" alt="resto"/>
- </div>
- 
-<form action="/auth/login" method="post"class="formSignup">
-  <p>
-    <label>
-      username:
-      <input type="text" name="username">
-    </label>
-  </p>
-  <p>
-    <label>
-      Password:
-      <input type="password" name="password">
-    </label>
-  </p>
+    <img src="/images/assos-bleue.png" alt="asso" />
+    <img src="/images/restaurateurs.png" alt="resto" />
+  </div>
 
-  {{#if errorMessage}}
-  <div class="error-message">{{errorMessage}}</div>
-  {{/if}}
+  <form action="/auth/login" method="post" class="formSignup">
+    <p>
+      <label>
+        Email :
+        <input type="text" name="username">
+      </label>
+    </p>
+    <p>
+      <label>
+        Mot de passe :
+        <input type="password" name="password">
+      </label>
+    </p>
 
-  <button type="submit">Login</button>
-</form>
+    {{#if errorMessage}}
+    <div class="error-message">{{errorMessage}}</div>
+    {{/if}}
+
+    <button type="submit">Login</button>
+  </form>
 </div>

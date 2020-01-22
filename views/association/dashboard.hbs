@@ -5,7 +5,7 @@
 ​
 <!---KPI section--->
 <div class="helloUser">
-  <h1>Bonjour !</h1>
+  <h1>Bonjour {{nomBonjour}}!</h1>
 </div>
 <section id="kpiSection">
   <div class="kpi">
@@ -25,7 +25,7 @@
 
   <div class="kpi">
     <h2>Emissions evitées</h2>
-    <h3>567</h3>
+    <h3>{{avoidedEmissions}}</h3>
     <!---Emissions CO2 diesel pour 1kg de déchets x n° kilos donnés--->
   </div>
 </section>
@@ -39,8 +39,8 @@
     <tr>
       <th>Produit</th>
       <th>Type de produit</th>
-      <th>Date de peremption</th>
-      <th>Poids du produit (Kg)</th>
+      {{!-- <th>Date de peremption</th> --}}
+      <th>Poids (Kg)</th>
       <th>Doneur</th>
       <th>Status</th>
       <th>Récuperer</th>
@@ -52,7 +52,7 @@
     <tr>
       <td>{{donNom}}</td>
       <td>{{donType}}</td>
-      <td>{{datePeremptionFormatted}}</td>
+      {{!-- <td>{{datePeremptionFormatted}}</td> --}}
       <td>{{donPoids}}</td>
       <td>{{donneur.raisonSociale}}</td>
       <td>{{donStatus}}</td>
