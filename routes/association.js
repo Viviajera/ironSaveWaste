@@ -33,6 +33,14 @@ router.get("/dashboard", ensureLogin.ensureLoggedIn(), function(
       const nbPendingDonations = pendingDons.length;
       const nbPickedUpDonations = pickedUpDons.length;
 
+      bookedDons.forEach(don => {
+        const d = don.datePeremption;
+        const jour = d.getDate();
+        const mois = d.getMonth() + 1;
+        const annee = d.getFullYear();
+        don.datePeremptionFormatted = `${jour}/${mois}/${annee}`;
+      });
+
       return res.render("association/dashboard", {
         booked: bookedDons,
         nbPendingDonations,

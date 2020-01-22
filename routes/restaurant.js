@@ -33,7 +33,7 @@ router.get("/dashboard", ensureLogin.ensureLoggedIn(), function(
 
       onGoingDons.forEach(don => {
         const d = don.datePeremption;
-
+        // AJOUTER LE USER NAME : TO DO
         const jour = d.getDate();
         const mois = d.getMonth() + 1;
         const annee = d.getFullYear();

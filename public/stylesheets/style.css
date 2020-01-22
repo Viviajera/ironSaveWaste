@@ -396,8 +396,8 @@ label {
 }
 
 .donation-map {
-    width: 80vh;
-    height: 80vh;
-    margin-left: 30em;
+    width: 100vh;
+    height: 50vh;
+    margin-left: 23em;
     margin-top: 2em;
 }
