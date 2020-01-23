@@ -395,3 +395,11 @@ label {
     empty-cells: show;
     border: 1px solid #52958D;
 }
+
+/*--------error------*/
+.error{
+    margin-top:25em; 
+    margin-left: 2em;
+    color: grey; 
+    text-align: center;
+}
