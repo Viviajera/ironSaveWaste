@@ -1,7 +1,7 @@
 # SAVE WASTE
 DESKTOP VERSION : http://iron-save-waste.herokuapp.com/
 
- README in French : https://www.notion.so/Read-me-IronSaveWaste-project-2-6202fa8cb7174971888e29db7d51057b
+README with more technical details in French : https://www.notion.so/Read-me-IronSaveWaste-project-2-6202fa8cb7174971888e29db7d51057b
 
 ## Instructions
 This app allows manage food waste for restaurant owners and save waste for charity organisations. 
